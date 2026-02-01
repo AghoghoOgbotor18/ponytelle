@@ -9,7 +9,7 @@ const NotFound = () => {
           Page Not Found.Go back to <Link to="/" className='text-amber-950 cursor-pointer'>Home</Link>
         </p>
     </div>
-  )
+  );
 }
 
 export default NotFound
