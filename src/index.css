@@ -4,4 +4,16 @@
     .brand-name{
         font-family: "Dancing Script", cursive;
     }
+    .brand-color{
+        color: #281a17;
+    }
+    .scroll-text{
+        animation: scroll 20s linear infinite;
+    }
+}
+
+
+@keyframes scroll{
+    0%{transform: translateX(100%) }
+    100%{transform: translateX(-100%);}
 }
