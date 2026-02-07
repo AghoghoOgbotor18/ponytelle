@@ -12,7 +12,7 @@ const FeaturedProducts = () => {
                 <h2 className="text-4xl font-bold mb-2">Featured Ponytails</h2>
                 <p className='text-md'>Get Our Fast Selling Ponytails</p>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-5">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5">
                 {featuredProducts.map((product) => (
                 <ProductCard key={product.id} product={product} />
                 ))}
