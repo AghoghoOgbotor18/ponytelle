@@ -37,14 +37,14 @@
   },
   {
     "id": "pt004",
-    "name": "Curly Bounce Ponytail Wig",
-    "price": 36000,
-    "length": 20,
-    "color": "Dark Brown",
-    "category": "curly",
-    "texture": "curly",
-    "image": "https://res.cloudinary.com/dysyzuviq/image/upload/v1770449316/wavy7_flket9.avif",
-    "rating": 4.7,
+    "name": "Premium Loose Wave Ponytail Wig",
+    "price": 43000,
+    "length": 26,
+    "color": "Jet Black",
+    "category": "wavy",
+    "texture": "premium-wave",
+    "image": "https://res.cloudinary.com/dysyzuviq/image/upload/v1770449310/wavy1_jpi350.avif",
+    "rating": 4.9,
     "inStock": true
   },
   {
@@ -277,14 +277,14 @@
   },
   {
     "id": "pt024",
-    "name": "Premium Loose Wave Ponytail Wig",
-    "price": 43000,
-    "length": 26,
-    "color": "Jet Black",
-    "category": "wavy",
-    "texture": "premium-wave",
-    "image": "https://res.cloudinary.com/dysyzuviq/image/upload/v1770449310/wavy1_jpi350.avif",
-    "rating": 4.9,
+    "name": "Curly Bounce Ponytail Wig",
+    "price": 36000,
+    "length": 20,
+    "color": "Dark Brown",
+    "category": "curly",
+    "texture": "curly",
+    "image": "https://res.cloudinary.com/dysyzuviq/image/upload/v1770449316/wavy7_flket9.avif",
+    "rating": 4.7,
     "inStock": true
   }
 ]

@@ -1,6 +1,7 @@
 import React from 'react';
 import ProductCard from './product/ProductCard';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const FeaturedProducts = () => {
     const products = useSelector((state) => state.products.items)
@@ -16,6 +17,9 @@ const FeaturedProducts = () => {
                 {featuredProducts.map((product) => (
                 <ProductCard key={product.id} product={product} />
                 ))}
+            </div>
+            <div className='flex justify-center items-center'>
+                <Link to="/shop" className='px-4 mt-15 w-fit bg-black text-white py-2 rounded-3xl hover:bg-[#281a17] active:bg-[#281a17]'>View More Products</Link>
             </div>
         </div>
     )

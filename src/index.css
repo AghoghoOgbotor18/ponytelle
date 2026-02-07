@@ -10,6 +10,15 @@
     .scroll-text{
         animation: scroll 20s linear infinite;
     }
+    /* Hide scrollbar for Chrome, Safari, firefox and Opera */
+    .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+    }
+    .scrollbar-hide {
+    -ms-overflow-style: none;  
+    scrollbar-width: none;  
+    }
+
 }
 
 
@@ -17,3 +26,5 @@
     0%{transform: translateX(100%) }
     100%{transform: translateX(-100%);}
 }
+
+

@@ -8,14 +8,11 @@ const FlashSales = () => {
     });
 
     const products = useSelector((state) => state.products.items) || [];
-    //only select six products
+    //only select five products
     const flashProducts = products.length ? products.slice(6, 11) : [];
     const [currentIndex, setCurrentIndex] = useState(0);
-    console.log("Products:", products);
-console.log("Flash Products:", flashProducts);
-console.log("Current Product:", flashProducts[currentIndex]);
-
-
+    
+    //image interval
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentIndex((prev) => (prev + 1) % flashProducts.length )

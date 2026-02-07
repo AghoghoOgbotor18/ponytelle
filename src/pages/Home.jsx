@@ -4,6 +4,7 @@ import PromoBar from '../components/PromoBar'
 import Category from '../components/Category'
 import FeaturedProducts from '../components/FeaturedProducts'
 import FlashSales from '../components/FlashSales'
+import PonytelleSpecial from '../components/PonytelleSpecial'
 
 const Home = () => {
     return (
@@ -13,6 +14,7 @@ const Home = () => {
         <Category />
         <FeaturedProducts />
         <FlashSales />
+        <PonytelleSpecial />
       </div>
     )
 }
