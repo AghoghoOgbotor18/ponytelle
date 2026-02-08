@@ -34,13 +34,15 @@ const PonytelleSpecial = () => {
                 <div className="p-3">
                     <h3 className="mt-2 font-semibold text-sm text-zinc-800 truncate w-[80%]">{product.name}</h3>
                     <div className="flex items-center gap-2 mt-2">
-                    <span className="brand-color font-bold"> &#8358;{newPrice.toLocaleString()}</span>
-                    <span className="text-xs text-gray-400 line-through">&#8358;{oldPrice.toLocaleString()}
+                    <span className="brand-color font-bold"> 
+                        &#8358;{newPrice.toLocaleString()}
+                    </span>
+                    <span className="text-xs text-gray-400 line-through">
+                        &#8358;{oldPrice.toLocaleString()}
                     </span>
                     </div>
-                    <button className="group mt-2 w-full bg-black text-white py-2 rounded hover:bg-[#281a17] active:bg-[#281a17] cursor-pointer flex justify-center items-center gap-2">
-                    Shop Now
-                    <FiArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
+                    <button className="mt-2 w-full bg-black text-white py-2 rounded hover:bg-[#281a17] active:bg-[#281a17] cursor-pointer flex justify-center items-center gap-2">
+                        Shop Now
                     </button>
                 </div>
                 </div>

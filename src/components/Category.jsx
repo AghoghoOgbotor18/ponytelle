@@ -26,7 +26,7 @@ const Category = () => {
     ];
 
     const navigate = useNavigate();
-    const handleClick = () => {
+    const handleClick = (slug) => {
         navigate(`/shop?category=${slug}`)
     }
 
