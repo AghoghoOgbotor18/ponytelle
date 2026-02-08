@@ -1,5 +1,6 @@
 import React from 'react';
 import { FiArrowRight } from 'react-icons/fi';
+import { Link } from "react-router-dom"
 
 const CTASection = () => {
     return (
@@ -8,6 +9,8 @@ const CTASection = () => {
                 <source src="https://res.cloudinary.com/dysyzuviq/video/upload/v1770509667/From_KlickPin_CF_Sleek_Ponytail___Beauty_Works_Video___Low_ponytail_hairstyles_Sleek_ponytail_hairstyles_Ponytail_hairstyles_easy_ljng3w.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
+            
+            {/*image fallback */}
             <img src="https://res.cloudinary.com/dysyzuviq/image/upload/v1770454858/curly-cat_lpec0h.jpg"
             alt="Ponytelle ponytail styles" className="md:hidden absolute inset-0 w-full h-full object-[50%_30%]" />
             <div className="absolute inset-0 bg-black/70"></div>
@@ -24,10 +27,10 @@ const CTASection = () => {
                     Sleek. Bouncy. Effortless ponytails made to elevate your everyday style.
                 </p>
 
-                <button className="group mt-6 inline-flex items-center gap-2 bg-white text-black px-6 py-3 rounded-full font-medium hover:bg-black hover:text-white active:bg-black active:text-white transition-all duration-300">
+                <Link className="group mt-6 inline-flex items-center gap-2 bg-white text-black px-6 py-3 rounded-full font-medium hover:bg-black hover:text-white active:bg-black active:text-white transition-all duration-300">
                     Shop Ponytelle
                     <FiArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
-                </button>
+                </Link>
             </div>
         </section>
     )

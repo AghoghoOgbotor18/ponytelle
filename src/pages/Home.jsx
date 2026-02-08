@@ -6,6 +6,7 @@ import FeaturedProducts from '../components/FeaturedProducts'
 import FlashSales from '../components/FlashSales'
 import PonytelleSpecial from '../components/PonytelleSpecial'
 import CTASection from '../components/CTASection'
+import Testimonials from '../components/Testimonials'
 
 const Home = () => {
     return (
@@ -17,6 +18,7 @@ const Home = () => {
         <FlashSales />
         <PonytelleSpecial />
         <CTASection />
+        <Testimonials />
       </div>
     )
 }
