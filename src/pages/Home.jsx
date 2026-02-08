@@ -7,6 +7,7 @@ import FlashSales from '../components/FlashSales'
 import PonytelleSpecial from '../components/PonytelleSpecial'
 import CTASection from '../components/CTASection'
 import Testimonials from '../components/Testimonials'
+import FAQSection from '../components/FAQSection'
 
 const Home = () => {
     return (
@@ -19,6 +20,7 @@ const Home = () => {
         <PonytelleSpecial />
         <CTASection />
         <Testimonials />
+        <FAQSection />
       </div>
     )
 }
