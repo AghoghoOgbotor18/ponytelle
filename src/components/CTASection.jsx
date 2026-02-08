@@ -5,11 +5,11 @@ import { Link } from "react-router-dom"
 const CTASection = () => {
     return (
         <section className='relative w-full h-[420px] md:h-[600px] overflow-hidden rounded-2xl my-16'>
-            <video autoPlay loop muted playsInline preload="auto" className="hidden md:block absolute inset-0 w-full h-full object-cover object-[50%_20%] ">
+            <video autoPlay loop muted playsInline preload="auto" className="hidden md:block absolute inset-0 w-full h-full object-cover object-[50%_20%]" poster="https://res.cloudinary.com/dysyzuviq/image/upload/v1770454858/curly-cat_lpec0h.jpg">
                 <source src="https://res.cloudinary.com/dysyzuviq/video/upload/v1770509667/From_KlickPin_CF_Sleek_Ponytail___Beauty_Works_Video___Low_ponytail_hairstyles_Sleek_ponytail_hairstyles_Ponytail_hairstyles_easy_ljng3w.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
-            
+
             {/*image fallback */}
             <img src="https://res.cloudinary.com/dysyzuviq/image/upload/v1770454858/curly-cat_lpec0h.jpg"
             alt="Ponytelle ponytail styles" className="md:hidden absolute inset-0 w-full h-full object-[50%_30%]" />
