@@ -5,6 +5,7 @@ import Category from '../components/Category'
 import FeaturedProducts from '../components/FeaturedProducts'
 import FlashSales from '../components/FlashSales'
 import PonytelleSpecial from '../components/PonytelleSpecial'
+import CTASection from '../components/CTASection'
 
 const Home = () => {
     return (
@@ -15,6 +16,7 @@ const Home = () => {
         <FeaturedProducts />
         <FlashSales />
         <PonytelleSpecial />
+        <CTASection />
       </div>
     )
 }
