@@ -9,7 +9,7 @@ const ProductCard = ({product}) => {
             <h3 className="mt-2 font-semibold text-sm text-zinc-800 truncate w-[80%]">{product.name}</h3>
             <p className="brand-color font-bold">&#8358;{product.price.toLocaleString()}</p>
             <button  className="mt-2 w-full bg-black text-white py-2 rounded hover:bg-[#281a17] active:bg-[#281a17] cursor-pointer">
-                Add to Cart
+                Shop Now
             </button>
         </div>
     )
