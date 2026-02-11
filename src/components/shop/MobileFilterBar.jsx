@@ -10,6 +10,7 @@ const MobileFilterBar = () => {
   const [openSort, setOpenSort] = useState(false);
   const dispatch = useDispatch();
 
+  
   return (
     <div className="flex justify-center items-center">
       {/* Fixed bottom bar */}

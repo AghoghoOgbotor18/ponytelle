@@ -7,10 +7,13 @@ import Cart from '../pages/Cart';
 import Checkout from '../pages/Checkout';
 import ProductDetails from '../pages/ProductDetails';
 import NotFound from '../pages/NotFound';
+import ScrollToTop from '../components/common/ScrollToTop';
 
 const AppRoute = () => {
   return (
-    <Routes>
+    <>
+      <ScrollToTop />
+      <Routes>
         <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="shop" element={<Shop />} />
@@ -19,7 +22,8 @@ const AppRoute = () => {
             <Route path="checkout" element={<Checkout />} />
         </Route>
         <Route path="*" element={<NotFound />} />
-    </Routes>
+      </Routes>
+    </>
   )
 }
 
