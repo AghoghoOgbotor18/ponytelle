@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import {FaArrowRight} from "react-icons/fa"
+import {FaArrowRight} from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 const FlashSales = () => {
     const [timeLeft, setTimeLeft] = useState({
@@ -77,10 +78,10 @@ const FlashSales = () => {
                                 <p className='text-sm'>Secs</p>
                             </div>
                         </div>
-                        <button className="group mt-4 w-full bg-black text-white py-2 rounded hover:bg-[#281a17] active:bg-[#281a17] cursor-pointer flex justify-center items-center gap-2">
+                        <Link to="/shop" className="group mt-4 w-full bg-black text-white py-2 rounded hover:bg-[#281a17] active:bg-[#281a17] cursor-pointer flex justify-center items-center gap-2">
                             <span className='group-hover:-translate-x-1'>Buy Now</span>
                             <FaArrowRight className='group-hover:translate-x-1'/>
-                        </button>
+                        </Link>
                     </div>
                     <div>
                         {flashProducts.length > 0 && (

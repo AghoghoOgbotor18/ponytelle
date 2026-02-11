@@ -1,77 +1,100 @@
-import React from 'react';
-import {createSlice} from "@reduxjs/toolkit";
-import productData from "../../data/products.json"
+// src/features/products/productsSlice.js
+import { createSlice } from "@reduxjs/toolkit";
+import productData from "../../data/products.json";
 
 const initialState = {
-    items: productData,
-    filteredItems: productData, //products after filter/search
-    status: "idle"
+  items: productData,
+  filteredItems: productData,
+  filters: {
+    category: "all",
+    rating: null,
+    length: null,
+    priceMax: null,
+    sort: null,
+  },
 };
+
+const applyFilters = (items, filters) => {
+  let result = [...items];
+
+  //category filtering
+  if (filters.category && filters.category !== "all") {
+    result = result.filter((p) => p.category === filters.category);
+  }
+
+  //rating filtering
+  if (filters.rating) {
+    result = result.filter((p) => p.rating >= filters.rating);
+  }
+
+  //hair length filtering
+  if (filters.length) {
+    result = result.filter((p) => p.length === filters.length);
+  }
+
+  //price filtering
+  if (filters.priceMax) {
+    result = result.filter((p) => p.price <= filters.priceMax);
+  }
+
+  //sorting
+  if (filters.sort === "price-low-high") {
+    result.sort((a, b) => a.price - b.price);
+  }
+
+  if (filters.sort === "price-high-low") {
+    result.sort((a, b) => b.price - a.price);
+  }
+
+  if (filters.sort === "rating") {
+    result.sort((a, b) => b.rating - a.rating);
+  }
+
+  return result;
+};
+
 const productsSlice = createSlice({
-    name: "products", 
-    initialState,
-    reducers: {
-        //search products
+  name: "products",
+  initialState,
+  reducers: {
+    setCategory: (state, action) => {
+      state.filters.category = action.payload;
+      state.filteredItems = applyFilters(state.items, state.filters);
+    },
 
-        //search by name
-        searchProducts: (state, action) => {
-            const query = action.payload.toLowerCase();
-            
-            state.filteredItems = state.items.filter((product) => (
-                product.name.toLowerCase().includes(query)
-            ))
-        },
+    setRating: (state, action) => {
+      state.filters.rating = action.payload;
+      state.filteredItems = applyFilters(state.items, state.filters);
+    },
 
-        //filter by category
-        filterByCategory: (state, action) => {
-            const category = action.payload;
-            if(category === "all"){
-                state.filteredItems = state.items
-            } else{
-                state.filteredItems = state.items.filter(
-                    (product) => product.category === category
-                )
-            }
-        },
+    setLength: (state, action) => {
+      state.filters.length = action.payload;
+      state.filteredItems = applyFilters(state.items, state.filters);
+    },
 
-        //Filter by price range
-        filterByPriceRange: (state, action) => {
-        const { min, max } = action.payload;
+    setPriceMax: (state, action) => {
+      state.filters.priceMax = action.payload;
+      state.filteredItems = applyFilters(state.items, state.filters);
+    },
 
-        state.filteredItems = state.items.filter(
-            (product) => product.price >= min && product.price <= max
-        );
-        },
+    setSort: (state, action) => {
+      state.filters.sort = action.payload;
+      state.filteredItems = applyFilters(state.items, state.filters);
+    },
 
-        //
-        sortProducts: (state, action) => {
-        const sortBy = action.payload;
-
-            if (sortBy === "price-low-high") {
-                state.filteredItems = [...state.filteredItems].sort(
-                (a, b) => a.price - b.price
-                );
-            }
-
-            if (sortBy === "price-high-low") {
-                state.filteredItems = [...state.filteredItems].sort(
-                (a, b) => b.price - a.price
-                );
-            }
-
-            if (sortBy === "rating") {
-                state.filteredItems = [...state.filteredItems].sort(
-                (a, b) => b.rating - a.rating
-                );
-            }
-        },
-
-        //Reset filters
-        resetFilters: (state) => {
-        state.filteredItems = state.items;
-        },
-  
-    }
+    resetFilters: (state) => {
+      state.filters = {
+        category: "all",
+        rating: null,
+        length: null,
+        priceMax: null,
+        sort: null,
+      };
+      state.filteredItems = state.items;
+    },
+  },
 });
-export const { searchProducts, filterByCategory, filterByPriceRange, sortProducts, resetFilters, } = productsSlice.actions;
+
+export const { setCategory, setRating, setLength, setPriceMax, setSort, resetFilters } = productsSlice.actions;
+
 export default productsSlice.reducer;

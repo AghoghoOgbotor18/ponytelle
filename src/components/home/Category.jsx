@@ -42,7 +42,7 @@ const Category = () => {
                 <img src={c.image} alt={c.name} className='w-90 md:[w-60] h-90'/>
                 <div className='absolute inset-0 bg-linear-to-t from-black/80 hover:from-[#281a17] hover:via-[#3a2621]/30 active:from-[#281a17] active:via-[#3a2621]/30 to-transparent cursor-pointer'></div>
                 <p className='absolute bottom-4 left-15 md:left-18 text-white text-lg font-semibold z-10'>
-                {c.name}
+                    {c.name}
                 </p>
             </div>
             ))}

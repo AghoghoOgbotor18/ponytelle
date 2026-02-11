@@ -27,7 +27,7 @@ const CTASection = () => {
                     Sleek. Bouncy. Effortless ponytails made to elevate your everyday style.
                 </p>
 
-                <Link className="group mt-6 inline-flex items-center gap-2 bg-white text-black px-6 py-3 rounded-full font-medium hover:bg-black hover:text-white active:bg-black active:text-white transition-all duration-300">
+                <Link to="/shop" className="group mt-6 inline-flex items-center gap-2 bg-white text-black px-6 py-3 rounded-full font-medium hover:bg-black hover:text-white active:bg-black active:text-white transition-all duration-300">
                     Shop Ponytelle
                     <FiArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
                 </Link>

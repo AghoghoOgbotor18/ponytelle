@@ -1,13 +1,13 @@
 import React from 'react'
-import Hero from '../components/Hero'
-import PromoBar from '../components/PromoBar'
-import Category from '../components/Category'
-import FeaturedProducts from '../components/FeaturedProducts'
-import FlashSales from '../components/FlashSales'
-import PonytelleSpecial from '../components/PonytelleSpecial'
-import CTASection from '../components/CTASection'
-import Testimonials from '../components/Testimonials'
-import FAQSection from '../components/FAQSection'
+import Hero from '../components/home/Hero'
+import PromoBar from '../components/home/PromoBar'
+import Category from '../components/home/Category'
+import FeaturedProducts from '../components/home/FeaturedProducts'
+import FlashSales from '../components/home/FlashSales'
+import PonytelleSpecial from '../components/home/PonytelleSpecial'
+import CTASection from '../components/home/CTASection'
+import Testimonials from '../components/home/Testimonials'
+import FAQSection from '../components/home/FAQSection'
 
 const Home = () => {
     return (
