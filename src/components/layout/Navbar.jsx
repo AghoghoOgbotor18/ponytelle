@@ -1,60 +1,154 @@
 import React, { useEffect, useState } from 'react'
-import { NavLink } from 'react-router-dom';
-import {FiShoppingCart, FiMenu, FiX} from "react-icons/fi"
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { FiShoppingCart, FiMenu, FiX, FiSearch } from "react-icons/fi";
+import { useDispatch } from "react-redux";
+import { setSearch } from "../../features/products/productsSlice";
 
 const Navbar = () => {
-    const [isScrolled, setIsScrolled] = useState(false);
-    const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [query, setQuery] = useState("");
+  const location = useLocation();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-    const toggleOpen = () => {
-        setIsOpen(!isOpen)
+  const isHome = location.pathname === "/";
+  const shouldBeTransparent = isHome && !isScrolled;
+
+  const toggleOpen = () => setIsOpen(!isOpen);
+
+  //handleScroll
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 15);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // live search + redirect to shop if searching from home
+  useEffect(() => {
+    dispatch(setSearch(query));
+
+    if (query && location.pathname !== "/shop") {
+      navigate("/shop");
     }
+  }, [query, dispatch, location.pathname, navigate]);
 
-    //change background on scroll
-    useEffect(() => {
-        const handleScroll = () => {
-            setIsScrolled(window.scrollY > 15)
-        }
-        window.addEventListener("scroll", handleScroll);
+  //clear search
+  const clearSearch = () => {
+    setQuery("");
+    dispatch(setSearch(""));
+  };
 
-        return () => window.removeEventListener("scroll", handleScroll);
+  return (
+    <div
+      className={`fixed top-0 left-0 right-0 z-50 h-10 md:h-16 transition-all duration-300 
+      ${shouldBeTransparent ? "bg-transparent" : "bg-white shadow-2xl"}`}
+    >
+      <div className='container mx-auto py-2 px-3'>
+        <div className='flex justify-between items-center gap-4'>
+          <div className='md:flex gap-10 items-center hidden'>
+            <NavLink to="/" className={({ isActive }) =>`text-lg font-semibold 
+              ${isActive
+                  ? shouldBeTransparent ? "text-white" : "text-black"
+                  : shouldBeTransparent ? "text-white/80" : "brand-color"}`
+              }
+            >
+              Home
+            </NavLink>
 
-    }, [])
+            <NavLink
+              to="/shop" className={({ isActive }) => `text-lg font-semibold 
+                ${isActive
+                  ? shouldBeTransparent ? "text-white" : "text-black"
+                  : shouldBeTransparent ? "text-white/80" : "brand-color"}`
+              }
+            >
+              Shop
+            </NavLink>
+          </div>
 
-    return (
-        <div className={`fixed inset-0 z-50 h-14 md:h-15 ${isScrolled ? "bg-white shadow-2xl" : "bg-transparent"}`}>
-            <div className='container mx-auto py-3 px-3'>
-                {/* desktop navbar */}
-                <div className='flex justify-between items-center'>
-                    <div className='md:flex gap-10 items-center hidden'>
-                        <NavLink to="/" className={({isActive}) => `text-lg font-semibold cursor-pointer ${isActive ? isScrolled ? "brand-color" : "text-white/80" : isScrolled ? "text-black" : "text-white"}`}>Home</NavLink>
-                        <NavLink to="/shop" className={({isActive}) => `text-lg font-semibold cursor-pointer ${isActive ? isScrolled ? "brand-color" : "text-white/80" : isScrolled ? "text-black" : "text-white"}`}>Shop</NavLink>
-                    </div>
-                    <h1 className={`font-extrabold text-3xl md:text-4xl brand-name ${isScrolled ? "text-black" : "text-white"}`}>Ponytelle</h1>
-                    <div className='flex items-center gap-10'>
-                        <NavLink to="/shop" className={`text-sm font-semibold cursor-pointer ${isScrolled ? "text-black" : "text-white"}`}>
-                            <FiShoppingCart size={22} />
-                        </NavLink>
+          {/* Logo */}
+          <h1 className={`font-extrabold text-2xl md:text-3xl brand-name 
+            ${shouldBeTransparent ? "text-white" : "text-black"}`}>
+            Ponytelle
+          </h1>
 
-                        {/*menu button */}
-                        <div className={`md:hidden cursor-pointer font-bold ${isScrolled ? "text-black" : "text-white"}`} onClick={toggleOpen}>
-                            {isOpen ? <FiX size={22} /> : <FiMenu size={22} />}
-                        </div>
-                    </div>
-                </div>
-                
+          {/* Search*/}
+          <div className='flex items-center gap-3'>
+            {/* Search (Desktop) */}
+            <div className="hidden md:flex items-center relative">
+              <FiSearch className={`absolute left-3 text-sm ${shouldBeTransparent ? "text-white" : "text-gray-500"}`} />
+              <input type="text" placeholder="Search wigs..." value={query} onChange={(e) => setQuery(e.target.value)} className={`pl-9 pr-9 py-1.5 rounded-full text-sm outline-none transition 
+                ${shouldBeTransparent
+                  ? "bg-white/20 placeholder-white/70 text-white border border-white/30"
+                  : "bg-gray-100 placeholder-gray-500 text-black border border-gray-200"}`}
+              />
+
+              {/* Cancel icon */}
+              {query && (
+                <button
+                  onClick={clearSearch}
+                  className={`absolute right-3 text-sm 
+                  ${shouldBeTransparent ? "text-white/70 hover:text-white" : "text-gray-500 hover:text-black"}`}
+                >
+                  <FiX />
+                </button>
+              )}
             </div>
-            {/* Mobile Navbar */}
-            {isOpen && (
-                <div className='md:hidden bg-[#281a17] h-[40vh] duration-300 flex items-center justify-center'>
-                    <div className='flex flex-col gap-14'>
-                        <NavLink to="/" className={({isActive}) => `text-md font-semibold ${isActive ? "text-white/60" : "text-white"}`}  onClick={() => setIsOpen(false)}>Home</NavLink>
-                        <NavLink to="/shop" className={({isActive}) => `text-md font-semibold ${isActive ? "text-white/60" : "text-white"}`}  onClick={() => setIsOpen(false)}>Shop</NavLink>
-                    </div>
-                </div>
-            )}
-        </div>
-    )
-}
 
-export default Navbar
+            {/* Cart */}
+            <NavLink
+              to="/shop"
+              className={`${shouldBeTransparent ? "text-white" : "text-black"}`}
+            >
+              <FiShoppingCart size={22} />
+            </NavLink>
+
+            {/* Mobile Menu */}
+            <div
+              className={`md:hidden cursor-pointer ${shouldBeTransparent ? "text-white" : "text-black"}`}
+              onClick={toggleOpen}
+            >
+              {isOpen ? <FiX size={22} /> : <FiMenu size={22} />}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      {isOpen && (
+        <div className='md:hidden bg-[#281a17] h-[50vh] flex flex-col items-center justify-center gap-8 p-6'>
+
+          {/* Mobile Search */}
+          <div className="w-full relative">
+            <FiSearch className="absolute left-3 top-3 text-white/70" />
+            <input type="text" placeholder="Search wigs..." value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              className="w-full pl-9 pr-9 py-2 rounded-full bg-white/20 text-white placeholder-white/70 outline-none"
+            />
+
+            {/* Cancel icon (mobile) */}
+            {query && (
+              <button
+                onClick={clearSearch}
+                className="absolute right-3 top-2.5 text-white/70 hover:text-white"
+              >
+                <FiX />
+              </button>
+            )}
+          </div>
+          <NavLink to="/" onClick={() => setIsOpen(false)} className="text-white text-lg">
+            Home
+          </NavLink>
+          <NavLink to="/shop" onClick={() => setIsOpen(false)} className="text-white text-lg">
+            Shop
+          </NavLink>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default Navbar;

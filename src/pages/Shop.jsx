@@ -22,7 +22,7 @@ const Shop = () => {
 
   return (
     <>
-      <section className="container mx-auto grid grid-cols-1 md:grid-cols-[280px_1fr] gap-10 py-10">
+      <section className="container mx-auto grid grid-cols-1 md:grid-cols-[280px_1fr] gap-10 py-10 md:pt-20 pt-12">
         {/* Filters */}
         <aside className="hidden md:block">
           <FilterSidebar />
@@ -35,7 +35,7 @@ const Shop = () => {
         </div>
       </section>
 
-      {/* Mobile filter bar*/}
+      {/* Mobile filter bar */}
       <MobileFilterBar />
     </>
   );
