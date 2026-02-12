@@ -43,7 +43,7 @@ const Navbar = () => {
 
   return (
     <div
-      className={`fixed top-0 left-0 right-0 z-50 h-10 md:h-16 transition-all duration-300 
+      className={`fixed top-0 left-0 right-0 z-50 h-13 md:h-14 transition-all duration-300 
       ${shouldBeTransparent ? "bg-transparent" : "bg-white shadow-2xl"}`}
     >
       <div className='container mx-auto py-2 px-3'>
@@ -76,7 +76,7 @@ const Navbar = () => {
           </h1>
 
           {/* Search*/}
-          <div className='flex items-center gap-3'>
+          <div className='flex items-center gap-5'>
             {/* Search (Desktop) */}
             <div className="hidden md:flex items-center relative">
               <FiSearch className={`absolute left-3 text-sm ${shouldBeTransparent ? "text-white" : "text-gray-500"}`} />
