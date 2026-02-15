@@ -3,6 +3,8 @@ import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { FiShoppingCart, FiMenu, FiX, FiSearch } from "react-icons/fi";
 import { useDispatch } from "react-redux";
 import { setSearch } from "../../features/products/productsSlice";
+import { useSelector } from "react-redux";
+
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -12,6 +14,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  //navbar scroll effect
   const isHome = location.pathname === "/";
   const shouldBeTransparent = isHome && !isScrolled;
 
@@ -26,10 +29,9 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // live search + redirect to shop if searching from home
+  // live search and redirect to shop if searching from home
   useEffect(() => {
     dispatch(setSearch(query));
-
     if (query && location.pathname !== "/shop") {
       navigate("/shop");
     }
@@ -40,6 +42,12 @@ const Navbar = () => {
     setQuery("");
     dispatch(setSearch(""));
   };
+
+  //cart count
+  const { items } = useSelector((state) => state.cart);
+  const cartCount = items.reduce(
+    (total, item) => total + item.quantity, 0
+  );
 
   return (
     <div
@@ -88,9 +96,7 @@ const Navbar = () => {
 
               {/* Cancel icon */}
               {query && (
-                <button
-                  onClick={clearSearch}
-                  className={`absolute right-3 text-sm 
+                <button onClick={clearSearch} className={`absolute right-3 text-sm 
                   ${shouldBeTransparent ? "text-white/70 hover:text-white" : "text-gray-500 hover:text-black"}`}
                 >
                   <FiX />
@@ -99,11 +105,13 @@ const Navbar = () => {
             </div>
 
             {/* Cart */}
-            <NavLink
-              to="/shop"
-              className={`${shouldBeTransparent ? "text-white" : "text-black"}`}
-            >
+            <NavLink to="/cart" className={`relative ${shouldBeTransparent ? "text-white" : "text-black"}`}>
               <FiShoppingCart size={22} />
+              {cartCount > 0 && (
+                <span className="absolute -top-2 -right-2 bg-[#281a17] text-white text-xs px-2 py-0.5 rounded-full">
+                  {cartCount}
+                </span>
+              )}
             </NavLink>
 
             {/* Mobile Menu */}

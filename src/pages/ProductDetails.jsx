@@ -2,12 +2,16 @@ import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { FaChevronLeft, FaStar } from "react-icons/fa";
+import { toast } from "react-toastify";
+import { addToCart } from "../features/cart/cartSlice";
+import { useDispatch } from "react-redux";
+
 
 const ProductDetails = () => {
   const { id } = useParams();
+  const dispatch = useDispatch();
   const [selectedLength, setSelectedLength] = useState(null);
   const [selectedColor, setSelectedColor] = useState(null);
-  const [error, setError] = useState("");
 
   const product = useSelector((state) =>
     state.products.items.find((p) => String(p.id) === id)
@@ -28,16 +32,22 @@ const ProductDetails = () => {
 
   const handleAddToCart = () => {
     if (!selectedLength || !selectedColor) {
-      setError("Please select a length and color before adding to cart.");
+      toast.error("Please select a length and color before adding to cart.");
       return;
     }
 
-    setError("");
-    console.log("Added to cart:", {
-      ...product,
-      selectedLength,
-      selectedColor,
-    });
+    dispatch(
+      addToCart({
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        image: product.image,
+        length: selectedLength,
+        color: selectedColor,
+      })
+    );
+
+    toast.success(`${product.name} Added to Cart`);
 
   };
 
@@ -53,11 +63,7 @@ const ProductDetails = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 p-3">
         {/* Image */}
         <div>
-          <img
-            src={product.image}
-            alt={product.name}
-            className="w-full rounded-2xl shadow-lg"
-          />
+          <img src={product.image} alt={product.name} className="w-full rounded-2xl shadow-lg" />
         </div>
 
         {/* Details */}
@@ -121,10 +127,6 @@ const ProductDetails = () => {
                 ))}
               </div>
             </div>
-          )}
-
-          {error && (
-            <p className="text-red-500 text-sm font-medium">{error}</p>
           )}
 
           <p className="text-gray-700 leading-relaxed">
