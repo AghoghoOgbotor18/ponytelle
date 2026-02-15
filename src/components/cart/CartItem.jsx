@@ -3,6 +3,7 @@ import { removeFromCart, increaseQuantity, decreaseQuantity } from "../../featur
 import { FaMinus, FaTrash, FaPlus } from "react-icons/fa";
 import Modal from "../common/Modal";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const CartItems = () => {
     const { items } = useSelector((state) => state.cart);
@@ -12,11 +13,16 @@ const CartItems = () => {
     const [modalIndex, setModalIndex] = useState(null);
 
     if (items.length === 0) {
-        return <p>Your cart is empty.</p>;
+        return (
+            <div className="flex flex-col items-center justify-center gap-4">
+                <p>Your cart is empty.</p>
+                <Link to="/shop" className="py-2 px-5 rounded bg-black hover:bg-[#281a17] text-white text-sm">Shop Now</Link>
+            </div>
+        );
     }
 
     return (
-        <div className="relative space-y-3 rounded-xl shadow-xl p-3 ">
+        <div className="relative space-y-3 rounded-xl shadow-2xl p-3 ">
             {items.map((item, index) => (
                 <div key={index} className={`flex flex-col ${index !== 0 ? "border-t border-gray-200 pt-4" : ""}`}>
                     <div className="flex gap-6 p-4">
@@ -33,7 +39,7 @@ const CartItems = () => {
                         </div>
                     </div>
                     <div className="flex justify-between items-center">
-                        <button onClick={() => setModalIndex(index)} className="ml-4 text-red-500 hover:text-red-500/90 text-sm flex items-center gap-2 cursor-pointer">
+                        <button onClick={() => setModalIndex(index)} className="ml-4 text-red-500 hover:bg-red-100 py-1 px-2 rounded text-sm flex items-center gap-2 cursor-pointer">
                             <FaTrash /> Remove
                         </button>
                         <div className="flex items-center gap-5">

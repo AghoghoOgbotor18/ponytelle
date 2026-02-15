@@ -7,17 +7,13 @@ const Modal = ({ index, closeModal }) => {
   const dispatch = useDispatch();
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex justify-center items-center z-50">
+    <div className="fixed inset-0 bg-black/35 flex justify-center items-center z-50">
       <div className="bg-white w-[90%] max-w-md p-5 rounded-xl shadow-lg flex flex-col gap-4">
         <div className="flex justify-between items-center">
           <p className="font-semibold text-lg">Remove from cart</p>
-          <FiX
-            size={20}
-            className="cursor-pointer"
-            onClick={closeModal}
-          />
+          <FiX size={20} className="cursor-pointer" onClick={closeModal} />
         </div>
-
+        
         <p className="text-sm">
           Do you really want to remove this item from cart?
         </p>
