@@ -3,8 +3,11 @@ import React from "react";
 import { useSelector } from "react-redux";
 import ProductCard from "./ProductCard";
 
-const ProductGrid = () => {
-  const products = useSelector((state) => state.products.filteredItems);
+const ProductGrid = ({products}) => {
+  
+  {products.map((product) => (
+    <ProductCard key={product.id} product={product} />
+  ))}
 
   return (
     <div className="w-full">

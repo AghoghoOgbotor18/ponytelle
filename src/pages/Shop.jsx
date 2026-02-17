@@ -6,19 +6,37 @@ import { useSearchParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setCategory } from "../features/products/productsSlice";
 import SortBar from "../components/shop/SortBar";
+import { useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Shop = () => {
+  const products = useSelector((state) => state.products.items) || [];
 
   const dispatch = useDispatch();
   const [searchParams] = useSearchParams();
 
   const categoryFromUrl = searchParams.get("category");
 
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const filter = queryParams.get("filter");
+
+  //show product according to category
   useEffect(() => {
     if (categoryFromUrl) {
       dispatch(setCategory(categoryFromUrl));
     }
   }, [categoryFromUrl, dispatch]);
+
+  let filteredProducts = products;
+
+  //show products by filter
+  if (filter === "bestsellers") {
+    filteredProducts = products.filter(
+      (product) => product.isBestSeller
+    );
+  }
+
 
   return (
     <>
@@ -31,7 +49,7 @@ const Shop = () => {
         {/* Products */}
         <div>
           <SortBar />
-          <ProductGrid />
+          <ProductGrid products={filteredProducts} />
         </div>
       </section>
 

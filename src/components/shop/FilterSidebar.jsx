@@ -4,10 +4,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { setCategory, setRating, setLength, resetFilters } from "../../features/products/productsSlice";
 import PriceFilter from "./PriceFilter";
 import { FaStar } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const FilterSidebar = () => {
   const dispatch = useDispatch();
   const filters = useSelector((state) => state.products.filters);
+  const navigate = useNavigate();
 
   return (
     <div className="space-y-8 sticky top-14 md:shadow-xl py-4 px-6 rounded bg-white">
@@ -18,7 +20,7 @@ const FilterSidebar = () => {
         {["all", "straight", "wavy", "curly", "kinky"].map((cat) => (
           <button
             key={cat}
-            onClick={() => dispatch(setCategory(cat))}
+            onClick={() => { dispatch(setCategory(cat)); navigate("/shop") }}
             className={`block text-left py-1 capitalize hover:text-[#281a17] ${
               filters.category === cat ? "text-[#281a17] font-semibold" : ""
             }`}
@@ -61,7 +63,7 @@ const FilterSidebar = () => {
       </div>
 
       {/* Reset All */}
-      <button onClick={() => dispatch(resetFilters())} className="text-red-800 cursor-pointer hover:text-red-600">
+      <button onClick={() => { dispatch(resetFilters()); navigate("/shop") }} className="text-red-800 cursor-pointer hover:text-red-600">
         Reset All Filters
       </button>
     </div>

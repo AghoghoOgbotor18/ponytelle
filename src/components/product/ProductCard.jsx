@@ -5,55 +5,110 @@ import { FaStar } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const ProductCard = ({ product, variant = "shop", onAddToCart }) => {
-  const rating = Math.round(product.rating);
+  const rating = Math.round(product.rating || 0);
+  const oldPrice = product.price + 5000;
+
+  const isSpecial = variant === "special";
 
   return (
-    <Link to={`/product/${product.id}`} className="block">
-      <div className="group border border-zinc-100/60 rounded-xl p-2 hover:shadow-lg active:shadow-lg transition bg-white h-[340px] flex flex-col">
-        <div className="relative overflow-hidden rounded-lg h-44">
-          <img src={product.image} alt={product.name} className="h-full w-full object-cover group-hover:scale-105 group-active:scale-105 transition duration-300" />
+    <div
+      className={`group bg-white border border-zinc-100/60 rounded-xl transition hover:shadow-lg active:shadow-lg ${
+        isSpecial
+          ? "min-w-[220px] p-1.5"
+          : "p-2 h-[340px] flex flex-col"
+      }`}
+    >
+      <Link to={`/product/${product.id}`} className="block">
+        {/* Image */}
+        <div
+          className={`relative overflow-hidden rounded-lg ${
+            isSpecial ? "h-[220px]" : "h-44"
+          }`}
+        >
+          <img
+            src={product.image}
+            alt={product.name}
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          />
+
+          {product.isBestSeller && (
+            <span className="absolute top-3 left-3 bg-black text-white text-xs px-3 py-1 rounded-full">
+              Best Seller
+            </span>
+          )}
         </div>
 
-        <div className="p-3 space-y-2 flex-1 flex flex-col justify-between">
+        {/* Content */}
+        <div className={`${isSpecial ? "p-3" : "p-3 flex-1 flex flex-col justify-between"}`}>
           <div>
-            <h3 className="font-semibold text-sm line-clamp-1">{product.name}</h3>
+            <h3
+              className={`font-semibold ${
+                isSpecial ? "text-sm truncate w-[80%]" : "text-sm line-clamp-1"
+              }`}
+            >
+              {product.name}
+            </h3>
 
-            {variant === "shop" && (
-              <p className="text-xs text-gray-500 capitalize">
-                {product.category} • {product.length} inches
-              </p>
-            )}
+            {/* Shop Variant Only */}
+            {!isSpecial && (
+              <>
+                <p className="text-xs text-gray-500 capitalize">
+                  {product.category} • {product.length} inches
+                </p>
 
-            {variant === "shop" && (
-              <div className="flex items-center gap-1 text-sm mt-1">
-                {[...Array(5)].map((_, i) => (
-                  <FaStar
-                    key={i}
-                    className={i < rating ? "text-yellow-400" : "text-gray-300"}
-                  />
-                ))}
-              </div>
+                <div className="flex items-center gap-1 text-sm mt-1">
+                  {[...Array(5)].map((_, i) => (
+                    <FaStar
+                      key={i}
+                      className={
+                        i < rating ? "text-yellow-400" : "text-gray-300"
+                      }
+                    />
+                  ))}
+                </div>
+              </>
             )}
           </div>
 
-          <div className="flex items-center justify-between pt-2">
-            <span className="font-bold text-[#281a17]">
-              &#8358;{product.price.toLocaleString()}
-            </span>
+          {/* Price + Button */}
+          <div
+            className={`mt-2 ${
+              isSpecial
+                ? ""
+                : "flex items-center justify-between pt-2"
+            }`}
+          >
+            <div className="flex items-center gap-2">
+              <span className="font-bold text-[#281a17]">
+                &#8358;{product.price.toLocaleString()}
+              </span>
 
-            {variant === "shop" ? (
-              <button className="bg-[#281a17] text-white p-2 rounded-full">
+              {product.isBestSeller && (
+                <span className="text-xs text-gray-400 line-through">
+                  &#8358;{oldPrice.toLocaleString()}
+                </span>
+              )}
+            </div>
+
+            {!isSpecial ? (
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  onAddToCart?.(product);
+                }}
+                className="bg-[#281a17] text-white p-2 rounded-full"
+              >
                 <FiShoppingBag />
               </button>
             ) : (
-              <button className="text-xs px-3 py-1.5 rounded bg-black text-white">
+              <button className="mt-3 w-full bg-black text-white py-2 rounded hover:bg-[#281a17] active:bg-[#281a17] transition">
                 Shop Now
               </button>
             )}
           </div>
         </div>
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 };
 

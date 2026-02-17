@@ -11,7 +11,8 @@
     "texture": "silky",
     "image": "https://res.cloudinary.com/dysyzuviq/image/upload/v1770449314/str6_qr0ico.avif",
     "rating": 4.6,
-    "inStock": true
+    "inStock": true,
+    "isBestSeller": true
   },
   {
     "id": "pt002",
@@ -53,7 +54,8 @@
     "texture": "premium-wave",
     "image": "https://res.cloudinary.com/dysyzuviq/image/upload/v1770449310/wavy1_jpi350.avif",
     "rating": 4.9,
-    "inStock": true
+    "inStock": true,
+    "isBestSeller": true
   },
   {
     "id": "pt005",
@@ -109,7 +111,8 @@
     "texture": "coily",
     "image": "https://res.cloudinary.com/dysyzuviq/image/upload/v1770449330/wavy8_bhvdbc.avif",
     "rating": 4.6,
-    "inStock": true
+    "inStock": true,
+    "isBestSeller": true
   },
 
   {
@@ -166,7 +169,8 @@
     "texture": "loose-wave",
     "image": "https://res.cloudinary.com/dysyzuviq/image/upload/v1770449316/wavy4_efjy9i.avif",
     "rating": 4.9,
-    "inStock": true
+    "inStock": true,
+    "isBestSeller": true
   },
 
   {
@@ -195,7 +199,8 @@
     "texture": "soft-curly",
     "image": "https://res.cloudinary.com/dysyzuviq/image/upload/v1770449287/curly1_d4vqkn.avif",
     "rating": 4.5,
-    "inStock": true
+    "inStock": true,
+    "isBestSeller": true
   },
   {
     "id": "pt015",
@@ -237,7 +242,8 @@
     "texture": "loose-wave",
     "image": "https://res.cloudinary.com/dysyzuviq/image/upload/v1770449285/curly2_gjh8le.avif",
     "rating": 4.6,
-    "inStock": true
+    "inStock": true,
+    "isBestSeller": true
   },
   {
     "id": "pt018",
@@ -293,7 +299,8 @@
     "texture": "loose-curl",
     "image": "https://res.cloudinary.com/dysyzuviq/image/upload/v1770449297/curly7_rvvwrd.avif",
     "rating": 4.7,
-    "inStock": true
+    "inStock": true,
+    "isBestSeller": true
   },
   {
     "id": "pt022",
@@ -335,6 +342,7 @@
     "texture": "curly",
     "image": "https://res.cloudinary.com/dysyzuviq/image/upload/v1770449316/wavy7_flket9.avif",
     "rating": 4.7,
-    "inStock": true
+    "inStock": true,
+    "isBestSeller": true
   }
 ]
