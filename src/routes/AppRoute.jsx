@@ -8,6 +8,7 @@ import Checkout from '../pages/Checkout';
 import ProductDetails from '../pages/ProductDetails';
 import NotFound from '../pages/NotFound';
 import ScrollToTop from '../components/common/ScrollToTop';
+import OrderSuccess from '../pages/OrderSuccess';
 
 const AppRoute = () => {
   return (
@@ -20,6 +21,7 @@ const AppRoute = () => {
             <Route path="product/:id" element={<ProductDetails />} />
             <Route path="cart" element={<Cart />} />
             <Route path="checkout" element={<Checkout />} />
+            <Route path="order-success" element={<OrderSuccess />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>

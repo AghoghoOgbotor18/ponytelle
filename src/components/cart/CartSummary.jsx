@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const CartSummary = () => {
     const { items } = useSelector((state) => state.cart);
@@ -30,9 +31,9 @@ const CartSummary = () => {
             <span>&#8358;{total.toLocaleString()}</span>
         </div>
 
-        <button className="w-full text-white py-3 rounded-full bg-[#281a17] transition">
+        <Link to="/checkout" className="flex justify-center w-full text-white py-3 px-5 rounded-full bg-[#281a17] transition">
             Checkout
-        </button>
+        </Link>
         </div>
     );
 };
