@@ -5,11 +5,11 @@ import { FaStar } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const ProductCard = ({ product, variant = "shop", onAddToCart }) => {
-  const rating = Math.round(product.rating); // 4.6 → 5
+  const rating = Math.round(product.rating);
 
   return (
     <Link to={`/product/${product.id}`} className="block">
-      <div className="group border border-zinc-100/60 rounded-xl p-2 hover:shadow-lg transition bg-white h-[340px] flex flex-col">
+      <div className="group border border-zinc-100/60 rounded-xl p-2 hover:shadow-lg active:shadow-lg transition bg-white h-[340px] flex flex-col">
         <div className="relative overflow-hidden rounded-lg h-44">
           <img src={product.image} alt={product.name} className="h-full w-full object-cover group-hover:scale-105 group-active:scale-105 transition duration-300" />
         </div>

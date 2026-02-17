@@ -30,7 +30,7 @@ const CartSummary = () => {
             <span>&#8358;{total.toLocaleString()}</span>
         </div>
 
-        <button className="w-full bg-black text-white py-3 rounded-full hover:bg-[#281a17] transition">
+        <button className="w-full text-white py-3 rounded-full bg-[#281a17] transition">
             Checkout
         </button>
         </div>

@@ -1,22 +1,20 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { FiArrowRight } from "react-icons/fi";
-import { FaStar } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const PonytelleSpecial = () => {
   const products = useSelector((state) => state.products.items) || [];
-
-  // pick some best sellers (you can filter by tag later)
   const bestSellers = products.slice(0, 8);
 
   return (
     <section className="container mx-auto py-10 px-2 md:px-0">
         <div className="flex items-center justify-between mb-4">
-            <h2 className="text-4xl font-bold mb-3">Ponytelle Specials</h2>
-            <button className="group inline-flex items-center gap-2 text-sm font-medium cursor-pointer hover:brand-color">
+            <h2 className="text-2xl md:text-4xl font-bold mb-3">Ponytelle Specials</h2>
+            <Link to="/shop" className="group inline-flex items-center gap-2 text-sm font-medium cursor-pointer hover:brand-color">
             View all
             <FiArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
-            </button>
+            </Link>
         </div>
 
         {/* Scroll-X Wrapper */}
@@ -41,9 +39,9 @@ const PonytelleSpecial = () => {
                         &#8358;{oldPrice.toLocaleString()}
                     </span>
                     </div>
-                    <button className="mt-2 w-full bg-black text-white py-2 rounded hover:bg-[#281a17] active:bg-[#281a17] cursor-pointer flex justify-center items-center gap-2">
+                    <Link to={`/product/${product.id}`} className="mt-2 w-full bg-black text-white py-2 rounded hover:bg-[#281a17] active:bg-[#281a17] cursor-pointer flex justify-center items-center gap-2">
                         Shop Now
-                    </button>
+                    </Link>
                 </div>
                 </div>
             );

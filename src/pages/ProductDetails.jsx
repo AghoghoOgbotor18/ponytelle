@@ -5,6 +5,8 @@ import { FaChevronLeft, FaStar } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { addToCart } from "../features/cart/cartSlice";
 import { useDispatch } from "react-redux";
+import PonytelleSpecial from "../components/home/PonytelleSpecial";
+import MostViewed from "../components/shop/MostViewed";
 
 
 const ProductDetails = () => {
@@ -141,6 +143,9 @@ const ProductDetails = () => {
             Add to Cart
           </button>
         </div>
+      </div>
+      <div>
+        <MostViewed />
       </div>
     </section>
   );
