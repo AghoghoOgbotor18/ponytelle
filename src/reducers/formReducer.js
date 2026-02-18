@@ -1,6 +1,6 @@
 export function formReducer(state, action) {
     switch (action.type) {
-        case "update_field":
+        case "update_form":
             return {
                 ...state,
                 [action.field]: action.value

@@ -10,10 +10,12 @@ import { useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const Shop = () => {
-  const products = useSelector((state) => state.products.items) || [];
+  const products = useSelector((state) => state.products.filteredItems) || [];
 
   const dispatch = useDispatch();
   const [searchParams] = useSearchParams();
+
+  const filters = useSelector((state) => state.products.filters);
 
   const categoryFromUrl = searchParams.get("category");
 
@@ -28,14 +30,14 @@ const Shop = () => {
     }
   }, [categoryFromUrl, dispatch]);
 
-  let filteredProducts = products;
+  let displayProducts = products;
 
-  //show products by filter
   if (filter === "bestsellers") {
-    filteredProducts = products.filter(
+    displayProducts = products.filter(
       (product) => product.isBestSeller
     );
   }
+
 
 
   return (
@@ -49,7 +51,7 @@ const Shop = () => {
         {/* Products */}
         <div>
           <SortBar />
-          <ProductGrid products={filteredProducts} />
+          <ProductGrid products={displayProducts} />
         </div>
       </section>
 

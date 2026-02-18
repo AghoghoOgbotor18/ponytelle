@@ -52,16 +52,19 @@ function SignupForm() {
 
     if (!items.length) return;
 
-    reduxDispatch(clearCart());
-    navigate("/order-success");
-    formDispatch({ type: "reset" });
+    formDispatch({ type: "set_submitting", payload: true });
+
+    //Processing delay
+    setTimeout(() => {
+      reduxDispatch(clearCart());
+      formDispatch({ type: "set_submitting", payload: false });
+      formDispatch({ type: "reset" });
+      navigate("/order-success");
+    }, 2000);
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="bg-white p-8 rounded-2xl shadow-xl space-y-6"
-    >
+    <form onSubmit={handleSubmit} className="bg-white p-8 rounded-2xl shadow-xl space-y-6">
       <h2 className="text-2xl font-semibold">Shipping Details</h2>
 
       {/* Name */}
@@ -72,7 +75,7 @@ function SignupForm() {
           value={state.name}
           onChange={handleChange}
           placeholder="Enter your full name"
-          className="w-full border border-gray-300 p-3 rounded-lg outline-none focus:ring-2 focus:ring-black"
+          className="w-full border border-gray-300 p-3 rounded-lg outline-none focus:ring-2 focus:ring-black text-black"
         />
         {state.errors.name && (
           <p className="text-red-500 text-sm mt-1">{state.errors.name}</p>
@@ -143,12 +146,22 @@ function SignupForm() {
       </div>
 
       {/* Button */}
-      <button
-        type="submit"
-        className="w-full bg-black text-white py-3 rounded-xl font-semibold hover:bg-[#281a17] transition duration-300"
+      <button type="submit" disabled={state.isSubmitting} className={`w-full py-3 rounded-xl font-semibold transition duration-300 flex items-center justify-center gap-2 
+      ${state.isSubmitting
+        ? "bg-gray-400 cursor-not-allowed"
+        : "bg-black text-white hover:bg-[#281a17]"
+      }`}
       >
-        Place Order
+        {state.isSubmitting ? (
+          <>
+            <span className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+            Processing...
+          </>
+          ) : (
+            "Place Order"
+          )}
       </button>
+
     </form>
   );
 }
