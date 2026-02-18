@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Hero = () => {
     return (
-        <section className='relative h-screen md:bg-[url("/images/ponytelle-wig.png")] bg-[url("/images/ponytel.png")] bg-cover bg-center bg-no-repeat flex items-end md:items-center'>
+        <section className='relative h-screen md:bg-[url("/images/ponytelle-wig.webp")] bg-[url("/images/ponytel.webp")] bg-cover bg-center bg-no-repeat flex items-end md:items-center'>
             <div className='bg-black/60 absolute inset-0 z-0'></div>
             <div className='container mx-auto text-white flex flex-col items-center md:items-start gap-6 z-10'>
                 <h1 className='text-5xl text-center md:text-start'>Ponytelle - Effortless Glam in Seconds</h1>
