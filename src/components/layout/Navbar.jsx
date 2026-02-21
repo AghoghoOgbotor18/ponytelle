@@ -4,6 +4,7 @@ import { FiShoppingCart, FiMenu, FiX, FiSearch } from "react-icons/fi";
 import { useDispatch } from "react-redux";
 import { setSearch } from "../../features/products/productsSlice";
 import { useSelector } from "react-redux";
+import MobileSearchOverlay from './MobileSearchOverlay';
 
 
 const Navbar = () => {
@@ -18,7 +19,11 @@ const Navbar = () => {
   const isHome = location.pathname === "/";
   const shouldBeTransparent = isHome && !isScrolled;
 
+  //mobile menu
   const toggleOpen = () => setIsOpen(!isOpen);
+
+  //search overlay
+  const [isOverlay, setIsOverlay] = useState(false);
 
   //handleScroll
   useEffect(() => {
@@ -104,6 +109,11 @@ const Navbar = () => {
               )}
             </div>
 
+            {/* mobile search */}
+            <div className={`md:hidden relative cursor-pointer ${shouldBeTransparent ? "text-white hover:text-white" : "text-black hover:text-black/80"}`}>
+              <FiSearch size={22} className="" onClick={() => setIsOverlay(true)} />
+            </div>
+
             {/* Cart */}
             <NavLink to="/cart" className={`relative ${shouldBeTransparent ? "text-white" : "text-black"}`}>
               <FiShoppingCart size={22} />
@@ -123,30 +133,14 @@ const Navbar = () => {
             </div>
           </div>
         </div>
+        {isOverlay && (
+          <MobileSearchOverlay isOpen={isOverlay} onClose={() => setIsOverlay(false)} />
+        )}
       </div>
 
       {/* Mobile Menu */}
       {isOpen && (
         <div className='md:hidden bg-[#281a17] h-[50vh] flex flex-col items-center justify-center gap-8 p-6'>
-
-          {/* Mobile Search */}
-          <div className="w-full relative">
-            <FiSearch className="absolute left-3 top-3 text-white/70" />
-            <input type="text" placeholder="Search wigs..." value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              className="w-full pl-9 pr-9 py-2 rounded-full bg-white/20 text-white placeholder-white/70 outline-none"
-            />
-
-            {/* Cancel icon (mobile) */}
-            {query && (
-              <button
-                onClick={clearSearch}
-                className="absolute right-3 top-2.5 text-white/70 hover:text-white"
-              >
-                <FiX />
-              </button>
-            )}
-          </div>
           <NavLink to="/" onClick={() => setIsOpen(false)} className="text-white text-lg">
             Home
           </NavLink>
