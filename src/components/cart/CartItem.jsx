@@ -47,13 +47,13 @@ const CartItems = () => {
                                 ${
                                     item.quantity === 1
                                         ? "bg-gray-400 text-white cursor-not-allowed"
-                                        : "bg-[#281a17] text-white"
+                                        : "bg-black hover:bg-[#281a17] text-white"
                                 }`}
                             >
                                 <FaMinus size={14} />
                             </button>
                             <span className="font-semibold">{item.quantity}</span>
-                            <button onClick={() => dispatch(increaseQuantity(index))} className="px-3 py-2 rounded bg-[#281a17] text-white cursor-pointer">
+                            <button onClick={() => dispatch(increaseQuantity(index))} className="px-3 py-2 rounded bg-black hover:bg-[#281a17] text-white cursor-pointer">
                                 <FaPlus size={14} />
                             </button>
                         </div>

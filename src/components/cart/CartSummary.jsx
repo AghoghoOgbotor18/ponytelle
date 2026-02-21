@@ -31,7 +31,7 @@ const CartSummary = () => {
             <span>&#8358;{total.toLocaleString()}</span>
         </div>
 
-        <Link to="/checkout" className="flex justify-center w-full text-white py-3 px-5 rounded-full bg-[#281a17] transition">
+        <Link to="/checkout" className="flex justify-center w-full text-white py-3 px-5 rounded-full bg-black hover:bg-[#281a17] transition">
             Checkout
         </Link>
         </div>
