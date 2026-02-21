@@ -34,14 +34,16 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // live search and redirect to shop if searching from home
-  useEffect(() => {
-    dispatch(setSearch(query));
-    if (query && location.pathname !== "/shop") {
+  const handleSearchChange = (e) => {
+    const value = e.target.value;
+    setQuery(value);
+    dispatch(setSearch(value));
+
+     // live search and redirect to shop when searching from any page
+    if (value && !location.pathname.startsWith("/shop")) {
       navigate("/shop");
     }
-  }, [query, dispatch, location.pathname, navigate]);
-
+  };
   //clear search
   const clearSearch = () => {
     setQuery("");
@@ -93,7 +95,7 @@ const Navbar = () => {
             {/* Search (Desktop) */}
             <div className="hidden md:flex items-center relative">
               <FiSearch className={`absolute left-3 text-sm ${shouldBeTransparent ? "text-white" : "text-gray-500"}`} />
-              <input type="text" placeholder="Search wigs..." value={query} onChange={(e) => setQuery(e.target.value)} className={`pl-9 pr-9 py-1.5 rounded-full text-sm outline-none transition 
+              <input type="text" placeholder="Search wigs..." value={query} onChange={handleSearchChange} className={`pl-9 pr-9 py-1.5 rounded-full text-sm outline-none transition 
                 ${shouldBeTransparent
                   ? "bg-white/20 placeholder-white/70 text-white border border-white/30"
                   : "bg-gray-100 placeholder-gray-500 text-black border border-gray-200"}`}
@@ -124,7 +126,7 @@ const Navbar = () => {
               )}
             </NavLink>
 
-            {/* Mobile Menu */}
+            {/* Mobile icons */}
             <div
               className={`md:hidden cursor-pointer ${shouldBeTransparent ? "text-white" : "text-black"}`}
               onClick={toggleOpen}
@@ -138,7 +140,7 @@ const Navbar = () => {
         )}
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile navlinks */}
       {isOpen && (
         <div className='md:hidden brand-bg h-[50vh] flex flex-col items-center justify-center gap-8 p-6'>
           <NavLink to="/" onClick={() => setIsOpen(false)} className={({isActive}) => `text-white ${isActive ? "text-xl" : "text-lg"}`}>
