@@ -3,12 +3,15 @@ import React from "react";
 import { FiShoppingBag } from "react-icons/fi";
 import { FaStar } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const ProductCard = ({ product, variant = "shop", onAddToCart }) => {
   const rating = Math.round(product.rating || 0);
   const oldPrice = product.price + 5000;
 
   const isSpecial = variant === "special";
+
+  const navigate = useNavigate();
 
   return (
     <div
@@ -39,7 +42,7 @@ const ProductCard = ({ product, variant = "shop", onAddToCart }) => {
         </div>
 
         {/* Content */}
-        <div className={`${isSpecial ? "p-3" : "p-3 flex-1 flex flex-col justify-between"}`}>
+        <div className={`${isSpecial ? "p-3" : "py-2 flex-1 flex flex-col justify-between"}`}>
           <div>
             <h3
               className={`font-semibold ${
@@ -71,20 +74,19 @@ const ProductCard = ({ product, variant = "shop", onAddToCart }) => {
           </div>
 
           {/* Price + Button */}
-          <div
-            className={`mt-2 ${
+          <div className={`mt-2 ${
               isSpecial
                 ? ""
                 : "flex items-center justify-between pt-2"
             }`}
           >
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1">
               <span className="font-bold text-[#281a17]">
                 &#8358;{product.price.toLocaleString()}
               </span>
 
               {product.isBestSeller && (
-                <span className="text-xs text-gray-400 line-through">
+                <span className="text-xs text-gray-400 line-through pr-2">
                   &#8358;{oldPrice.toLocaleString()}
                 </span>
               )}
@@ -96,9 +98,9 @@ const ProductCard = ({ product, variant = "shop", onAddToCart }) => {
                   e.preventDefault();
                   onAddToCart?.(product);
                 }}
-                className="bg-[#281a17] text-white p-2 rounded-full"
+                className="bg-[#281a17] hover:bg-[#35231f] text-white p-2 rounded-full cursor-pointer"
               >
-                <FiShoppingBag />
+                <FiShoppingBag onClick={() => navigate("/cart")} />
               </button>
             ) : (
               <button className="mt-3 w-full bg-black text-white py-2 rounded hover:bg-[#281a17] active:bg-[#281a17] transition">
