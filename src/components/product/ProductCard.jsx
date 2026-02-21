@@ -1,7 +1,7 @@
 // src/components/shared/ProductCard.jsx
 import React from "react";
 import { FiShoppingBag } from "react-icons/fi";
-import { FaStar } from "react-icons/fa";
+import { FaFire, FaStar } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
@@ -42,10 +42,9 @@ const ProductCard = ({ product, variant = "shop", onAddToCart }) => {
         </div>
 
         {/* Content */}
-        <div className={`${isSpecial ? "p-3" : "py-2 flex-1 flex flex-col justify-between"}`}>
+        <div className={`${isSpecial ? "py-3" : "py-2 flex-1 flex flex-col justify-between"}`}>
           <div>
-            <h3
-              className={`font-semibold ${
+            <h3 className={`font-semibold ${
                 isSpecial ? "text-sm truncate w-[80%]" : "text-sm line-clamp-1"
               }`}
             >
@@ -72,6 +71,14 @@ const ProductCard = ({ product, variant = "shop", onAddToCart }) => {
               </>
             )}
           </div>
+
+          {/* sold items */}
+          {product.isBestSeller && (
+            <div className="flex items-center gap-1 mt-1 text-red-800 text-xs">
+              <FaFire/>
+              <p>{product.sold}</p>
+            </div>
+          )}
 
           {/* Price + Button */}
           <div className={`mt-2 ${
