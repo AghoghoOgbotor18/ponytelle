@@ -28,7 +28,7 @@ const Modal = ({ index, closeModal }) => {
               dispatch(removeFromCart(index));
               closeModal();
             }}
-            className="flex items-center justify-center gap-4 rounded bg-[#281a17] py-2 px-3 text-white"
+            className="flex items-center justify-center gap-4 rounded brand-bg py-2 px-3 text-white"
           >
             <FaRegTrashAlt /> Remove Item
           </button>

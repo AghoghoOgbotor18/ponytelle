@@ -118,7 +118,7 @@ const Navbar = () => {
             <NavLink to="/cart" className={`relative ${shouldBeTransparent ? "text-white" : "text-black"}`}>
               <FiShoppingCart size={22} />
               {cartCount > 0 && (
-                <span className="absolute -top-2 -right-2 bg-[#281a17] text-white text-xs px-2 py-0.5 rounded-full">
+                <span className="absolute -top-2 -right-2 brand-bg text-white text-xs px-2 py-0.5 rounded-full">
                   {cartCount}
                 </span>
               )}
@@ -140,7 +140,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className='md:hidden bg-[#281a17] h-[50vh] flex flex-col items-center justify-center gap-8 p-6'>
+        <div className='md:hidden brand-bg h-[50vh] flex flex-col items-center justify-center gap-8 p-6'>
           <NavLink to="/" onClick={() => setIsOpen(false)} className={({isActive}) => `text-white ${isActive ? "text-xl" : "text-lg"}`}>
             Home
           </NavLink>

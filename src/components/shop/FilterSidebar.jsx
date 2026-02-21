@@ -21,8 +21,8 @@ const FilterSidebar = () => {
           <button
             key={cat}
             onClick={() => { dispatch(setCategory(cat)); navigate("/shop") }}
-            className={`block text-left py-1 capitalize hover:text-[#281a17] ${
-              filters.category === cat ? "text-[#281a17] font-semibold" : ""
+            className={`block text-left py-1 capitalize hover:brand-color ${
+              filters.category === cat ? "brand-color font-semibold" : ""
             }`}
           >
             {cat}

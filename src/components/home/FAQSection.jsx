@@ -5,7 +5,7 @@ import NewsLetter from "./NewsLetter";
 const faqs = [
   {
     q: "How long does Ponytelle hair last?",
-    a: "With proper care, Ponytelle ponytails can last 6–12 months or more depending on usage and maintenance.",
+    a: "With proper care, Ponytelle ponytails can last 6-12 months or more depending on usage and maintenance.",
   },
   {
     q: "Can I style the ponytail with heat?",
@@ -17,7 +17,7 @@ const faqs = [
   },
   {
     q: "What if I receive the wrong product?",
-    a: "No worries! Contact our support within 48 hours and we’ll resolve it quickly.",
+    a: "No worries! Contact our support within 48 hours and we'll resolve it quickly.",
   },
 ];
 

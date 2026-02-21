@@ -88,7 +88,7 @@ const ProductCard = ({ product, variant = "shop", onAddToCart }) => {
             }`}
           >
             <div className="flex items-center gap-1">
-              <span className="font-bold text-[#281a17]">
+              <span className="font-bold brand-color">
                 &#8358;{product.price.toLocaleString()}
               </span>
 
@@ -105,12 +105,12 @@ const ProductCard = ({ product, variant = "shop", onAddToCart }) => {
                   e.preventDefault();
                   onAddToCart?.(product);
                 }}
-                className="bg-[#281a17] hover:bg-[#35231f] text-white p-2 rounded-full cursor-pointer"
+                className="p-2 rounded-full brand-bg text-white"
               >
                 <FiShoppingBag onClick={() => navigate("/cart")} />
               </button>
             ) : (
-              <button className="mt-3 w-full bg-black text-white py-2 rounded hover:bg-[#281a17] active:bg-[#281a17] transition">
+              <button className="mt-3 w-full bg-black hover:bg-[#281a17] text-white rounded py-2 px-3 transition">
                 Shop Now
               </button>
             )}

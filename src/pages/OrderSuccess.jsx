@@ -28,7 +28,7 @@ const OrderSuccess = () => {
 
         <Link
           to="/shop"
-          className="inline-block w-full bg-black text-white py-3 rounded-xl font-semibold hover:bg-[#281a17] transition"
+          className="inline-block w-full bg-black text-white py-3 rounded-xl font-semibold hover:brand-bg transition"
         >
           Continue Shopping
         </Link>

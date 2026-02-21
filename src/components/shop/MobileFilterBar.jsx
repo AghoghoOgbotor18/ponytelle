@@ -14,7 +14,7 @@ const MobileFilterBar = () => {
   return (
     <div className="flex justify-center items-center">
       {/* Fixed bottom bar */}
-      <div className="fixed w-1/2 bottom-3 bg-[#281a17] text-white flex md:hidden rounded-3xl py-1 z-40">
+      <div className="fixed w-1/2 bottom-3 brand-bg text-white flex md:hidden rounded-3xl py-1 z-40">
         <button className="flex-1 py-3 flex items-center justify-center gap-2" onClick={() => setOpenFilter(true)}>
           <FiFilter /> Filter
         </button>

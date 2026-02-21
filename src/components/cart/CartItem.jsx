@@ -53,7 +53,7 @@ const CartItems = () => {
                                 <FaMinus size={14} />
                             </button>
                             <span className="font-semibold">{item.quantity}</span>
-                            <button onClick={() => dispatch(increaseQuantity(index))} className="px-3 py-2 rounded bg-black hover:bg-[#281a17] text-white cursor-pointer">
+                            <button onClick={() => dispatch(increaseQuantity(index))}>
                                 <FaPlus size={14} />
                             </button>
                         </div>

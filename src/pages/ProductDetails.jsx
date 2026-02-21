@@ -5,7 +5,6 @@ import { FaChevronLeft, FaStar } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { addToCart } from "../features/cart/cartSlice";
 import { useDispatch } from "react-redux";
-import PonytelleSpecial from "../components/home/PonytelleSpecial";
 import MostViewed from "../components/shop/MostViewed";
 
 
@@ -138,7 +137,7 @@ const ProductDetails = () => {
 
           <button
             onClick={handleAddToCart}
-            className="mt-4 px-6 py-3 rounded-full bg-black text-white hover:bg-[#281a17] transition"
+            className="mt-4 px-6 py-3 rounded-full bg-black text-white hover:brand-bg transition"
           >
             Add to Cart
           </button>
