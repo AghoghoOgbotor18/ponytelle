@@ -64,7 +64,7 @@ const Navbar = () => {
           <div className='md:flex gap-10 items-center hidden'>
             <NavLink to="/" className={({ isActive }) =>`text-lg font-semibold 
               ${isActive
-                  ? shouldBeTransparent ? "text-white" : "text-black"
+                  ? shouldBeTransparent ? "text-white text-xl" : "text-black text-xl"
                   : shouldBeTransparent ? "text-white/80" : "brand-color"}`
               }
             >
@@ -74,7 +74,7 @@ const Navbar = () => {
             <NavLink
               to="/shop" className={({ isActive }) => `text-lg font-semibold 
                 ${isActive
-                  ? shouldBeTransparent ? "text-white" : "text-black"
+                  ? shouldBeTransparent ? "text-white" : "text-black text-xl"
                   : shouldBeTransparent ? "text-white/80" : "brand-color"}`
               }
             >
@@ -141,10 +141,10 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {isOpen && (
         <div className='md:hidden bg-[#281a17] h-[50vh] flex flex-col items-center justify-center gap-8 p-6'>
-          <NavLink to="/" onClick={() => setIsOpen(false)} className="text-white text-lg">
+          <NavLink to="/" onClick={() => setIsOpen(false)} className={({isActive}) => `text-white ${isActive ? "text-xl" : "text-lg"}`}>
             Home
           </NavLink>
-          <NavLink to="/shop" onClick={() => setIsOpen(false)} className="text-white text-lg">
+          <NavLink to="/shop" onClick={() => setIsOpen(false)} className={({isActive}) => `text-white ${isActive ? "text-xl" : "text-lg"}`}>
             Shop
           </NavLink>
         </div>
