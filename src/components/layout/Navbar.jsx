@@ -82,6 +82,15 @@ const Navbar = () => {
             >
               Shop
             </NavLink>
+
+            <NavLink to="/wishlist" className={({ isActive }) =>`text-lg font-semibold 
+              ${isActive
+                  ? shouldBeTransparent ? "text-white text-xl" : "text-black text-xl"
+                  : shouldBeTransparent ? "text-white/80" : "brand-color"}`
+              }
+            >
+              Wishlist
+            </NavLink>
           </div>
 
           {/* Logo */}

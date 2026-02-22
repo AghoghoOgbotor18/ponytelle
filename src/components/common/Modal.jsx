@@ -2,8 +2,9 @@ import { FaRegHeart, FaRegTrashAlt } from "react-icons/fa";
 import { FiX } from "react-icons/fi";
 import { useDispatch } from "react-redux";
 import { removeFromCart } from "../../features/cart/cartSlice";
+import { addToWishlist } from "../../features/wishList/wishlistSlice";
 
-const Modal = ({ index, closeModal }) => {
+const Modal = ({ item, index, closeModal }) => {
   const dispatch = useDispatch();
 
   return (
@@ -19,7 +20,13 @@ const Modal = ({ index, closeModal }) => {
         </p>
 
         <div className="flex flex-col gap-3">
-          <button className="flex items-center justify-center gap-4 rounded border border-[#281a17] py-2 px-3">
+          <button onClick={() => {
+              dispatch(addToWishlist(item));
+              dispatch(removeFromCart(index));
+              closeModal();
+            }}
+            className="flex items-center justify-center gap-4 rounded border border-[#281a17] py-2 px-3"
+          >
             <FaRegHeart /> Save for later
           </button>
 
