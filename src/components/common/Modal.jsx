@@ -3,6 +3,7 @@ import { FiX } from "react-icons/fi";
 import { useDispatch } from "react-redux";
 import { removeFromCart } from "../../features/cart/cartSlice";
 import { addToWishlist } from "../../features/wishList/wishlistSlice";
+import { toast } from "react-toastify";
 
 const Modal = ({ item, index, closeModal }) => {
   const dispatch = useDispatch();
@@ -24,8 +25,9 @@ const Modal = ({ item, index, closeModal }) => {
               dispatch(addToWishlist(item));
               dispatch(removeFromCart(index));
               closeModal();
+              toast.success(`${item.name} added to wishlist`);
             }}
-            className="flex items-center justify-center gap-4 rounded border border-[#281a17] py-2 px-3"
+            className="flex items-center justify-center gap-4 rounded border cursor-pointer border-[#281a17] py-2 px-3 bg-gray-100 hover:bg-gray-200/50"
           >
             <FaRegHeart /> Save for later
           </button>
@@ -35,7 +37,7 @@ const Modal = ({ item, index, closeModal }) => {
               dispatch(removeFromCart(index));
               closeModal();
             }}
-            className="flex items-center justify-center gap-4 rounded brand-bg py-2 px-3 text-white"
+            className="flex items-center justify-center gap-4 rounded cursor-pointer bg-black hover:bg-[#321a17] py-2 px-3 text-white"
           >
             <FaRegTrashAlt /> Remove Item
           </button>

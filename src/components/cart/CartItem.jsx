@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { removeFromCart, increaseQuantity, decreaseQuantity } from "../../features/cart/cartSlice";
+import { increaseQuantity, decreaseQuantity } from "../../features/cart/cartSlice";
 import { FaMinus, FaTrash, FaPlus } from "react-icons/fa";
 import Modal from "../common/Modal";
 import { useState } from "react";
@@ -59,7 +59,7 @@ const CartItems = () => {
                         </div>
                     </div>
                     {modalIndex !== null && (
-                        <Modal index={modalIndex} closeModal={() => setModalIndex(null)} />
+                        <Modal item={item} index={modalIndex} closeModal={() => setModalIndex(null)} />
                     )}
                 </div>
             ))}

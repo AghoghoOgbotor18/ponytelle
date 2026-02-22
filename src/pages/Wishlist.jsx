@@ -1,46 +1,84 @@
 import { useSelector, useDispatch } from "react-redux";
 import { addToCart } from "../features/cart/cartSlice";
 import { removeFromWishlist } from "../features/wishList/wishlistSlice";
+import { FaHeart } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 const Wishlist = () => {
   const { items } = useSelector((state) => state.wishlist);
   const dispatch = useDispatch();
 
-  if (items.length === 0) {
-    return <p className="p-6 text-center">Your wishlist is empty</p>;
-  }
+  const validItems = items?.filter(Boolean) || [];
 
   return (
-    <div className="container mx-auto p-6 grid gap-6">
-      {items.map((item) => (
-        <div
-          key={item.id}
-          className="flex justify-between items-center border p-4 rounded"
-        >
-          <div>
-            <p className="font-semibold">{item.name}</p>
-            <p className="text-sm text-gray-500">${item.price}</p>
-          </div>
+    <div className="container mx-auto px-4 md:px-6 mt-25 mb-25">
+      
+      {/* Title */}
+      <div className="flex items-center justify-between mb-8">
+        <h1 className="text-2xl md:text-3xl font-bold">
+          Wishlist ({validItems.length})
+        </h1>
+      </div>
 
-          <div className="flex gap-3">
-            <button
-              onClick={() => dispatch(addToCart(item))}
-              className="brand-bg text-white px-4 py-2 rounded"
-            >
-              Add to Cart
-            </button>
-
-            <button
-              onClick={() =>
-                dispatch(removeFromWishlist(item.id))
-              }
-              className="border px-4 py-2 rounded"
-            >
-              Remove
-            </button>
-          </div>
+      {/* Empty State */}
+      {items.length === 0 ? (
+        <div className="flex flex-col items-center justify-center text-center py-20">
+          <FaHeart className="text-4xl text-gray-300 mb-4" />
+          <p className="text-gray-500 text-lg">
+            Your wishlist is empty
+          </p>
         </div>
-      ))}
+      ) : (
+        <div className="">
+          {items.map((item) => (
+            <div
+              key={item.id}
+              className="flex justify-between items-center shadow-xl p-4 rounded mb-10"
+            >
+              <div className="h-30 flex justify-between gap-4 rounded-lg mb-4 overflow-hidden">
+                <img
+                  src={item.image}
+                  alt={item.name}
+                  className="h-full object-contain rounded"
+                />
+                <div className="flex-1">
+                  <h2 className="font-semibold text-lg mb-3 line-clamp-1">
+                    {item.name}
+                  </h2>
+                  <div className="text-gray-600 font-medium">
+                    <p className="mb-1">
+                      &#8358;{item.price}
+                    </p>
+                    <p>
+                      Length: {item.length}" | Color: {item.color}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Actions */}
+              <div className="flex justify-end gap-3 mt-auto">
+                <button
+                  onClick={() => {dispatch(addToCart(item)); toast.success(`${item.name} added to cart`)}}
+                  className="bg-black hover:bg-[#281a17] text-white py-2 rounded text-sm hover:opacity-90 transition px-3 cursor-pointer"
+                >
+                  Add to Cart
+                </button>
+
+                <button
+                  onClick={() =>{
+                    dispatch(removeFromWishlist(item.id));
+                    toast.success(`${item.name} removed from wishlist`)
+                  }}
+                  className="px-3 border rounded text-sm transition hover:bg-gray-100 cursor-pointer"
+                >
+                  Remove
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

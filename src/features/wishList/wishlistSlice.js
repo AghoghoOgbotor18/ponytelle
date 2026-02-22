@@ -4,7 +4,11 @@ import { createSlice } from "@reduxjs/toolkit";
 const loadWishlist = () => {
   try {
     const stored = localStorage.getItem("wishlist");
-    return stored ? JSON.parse(stored) : [];
+    const parsed = stored ? JSON.parse(stored) : [];
+
+    return Array.isArray(parsed)
+      ? parsed.filter((item) => item && item.id)
+      : [];
   } catch (error) {
     return [];
   }
@@ -19,8 +23,10 @@ const wishlistSlice = createSlice({
   initialState,
   reducers: {
     addToWishlist: (state, action) => {
+      if (!action.payload || !action.payload.id) return;
+
       const exists = state.items.find(
-        (item) => item.id === action.payload.id
+        (item) => item && item.id === action.payload.id
       );
 
       if (!exists) {
@@ -46,6 +52,7 @@ const wishlistSlice = createSlice({
     clearWishlist: (state) => {
       state.items = [];
       localStorage.removeItem("wishlist");
+      console.log(localStorage.removeItem("wishlist"))
     },
   },
 });

@@ -137,7 +137,7 @@ const ProductDetails = () => {
 
           <button
             onClick={handleAddToCart}
-            className="mt-4 px-6 py-3 rounded-full bg-black text-white hover:brand-bg transition"
+            className="mt-4 px-6 py-3 rounded-full bg-black hover:bg-[#281a17] text-white hover:brand-bg transition"
           >
             Add to Cart
           </button>
