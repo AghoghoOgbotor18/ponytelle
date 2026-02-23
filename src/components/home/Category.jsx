@@ -36,12 +36,12 @@ const Category = () => {
             <h2 className='font-black text-4xl mb-2'>Our Collections</h2>
             <p className='text-md'>Check out our Ponytail Collections</p>
         </div>
-        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-7'>
+        <div className='flex flex-col md:flex-row flex-wrap justify-center items-center gap-12'>
             {categories.map((c, id) => (
-            <div key={id} className='relative overflow-hidden rounded-md' onClick={() => handleClick(c.slug)}>
-                <img src={c.image} alt={c.name} className='w-90 md:[w-60] h-90'/>
+            <div key={id} className='relative overflow-hidden rounded-full' onClick={() => handleClick(c.slug)}>
+                <img src={c.image} alt={c.name} className='w-60 md:[w-60] h-90'/>
                 <div className='absolute inset-0 bg-linear-to-t from-black/80 hover:from-[#281a17] hover:via-[#3a2621]/30 active:from-[#281a17] active:via-[#3a2621]/30 to-transparent cursor-pointer'></div>
-                <p className='absolute bottom-4 left-15 md:left-18 text-white text-lg font-semibold z-10'>
+                <p className='absolute bottom-10 left-12 md:left-13 text-white text-lg font-semibold z-10'>
                     {c.name}
                 </p>
             </div>
