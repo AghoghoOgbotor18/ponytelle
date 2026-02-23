@@ -3,13 +3,23 @@ import { FiInstagram, FiTwitter, FiFacebook, FiMail } from "react-icons/fi";
 
 const Footer = () => {
   return (
-    <footer className="bg-zinc-950 text-zinc-300 mt-20">
+    <footer className="relative bg-zinc-950 text-zinc-300 mt-20 overflow-hidden">
+      
+      {/* Huge Background Brand */}
+      <div className="absolute md:bottom-10 rotate-45 md:rotate-0 max-sm:top-50  left-1/2 -translate-x-1/2 pointer-events-none select-none">
+        <h1 className="text-[100px] md:text-[160px] lg:text-[210px] font-extrabold tracking-widest text-white/1 whitespace-nowrap brand-name">
+          PONYTELLE
+        </h1>
+      </div>
+
       {/* Top */}
-      <div className="container mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-4 gap-10">
+      <div className="relative container mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-4 gap-10 z-10">
         
         {/* Brand */}
         <div>
-          <h3 className="text-2xl font-bold text-white mb-3">Ponytelle</h3>
+          <h3 className="text-2xl font-bold text-white mb-3 tracking-wide">
+            Ponytelle
+          </h3>
           <p className="text-sm text-zinc-400 leading-relaxed max-w-xs">
             Premium ponytail extensions designed to elevate your everyday look.
             Sleek. Effortless. Confident.
@@ -29,7 +39,9 @@ const Footer = () => {
 
         {/* Links */}
         <div>
-          <h4 className="text-white font-semibold mb-4">Shop</h4>
+          <h4 className="text-white font-semibold mb-4 uppercase tracking-wide">
+            Shop
+          </h4>
           <ul className="space-y-2 text-sm">
             <li><a href="#" className="hover:text-white transition">All Products</a></li>
             <li><a href="#" className="hover:text-white transition">Best Sellers</a></li>
@@ -40,7 +52,9 @@ const Footer = () => {
 
         {/* Support */}
         <div>
-          <h4 className="text-white font-semibold mb-4">Support</h4>
+          <h4 className="text-white font-semibold mb-4 uppercase tracking-wide">
+            Support
+          </h4>
           <ul className="space-y-2 text-sm">
             <li><a href="#" className="hover:text-white transition">FAQs</a></li>
             <li><a href="#" className="hover:text-white transition">Shipping & Returns</a></li>
@@ -51,7 +65,9 @@ const Footer = () => {
 
         {/* Newsletter */}
         <div>
-          <h4 className="text-white font-semibold mb-4">Stay in the loop</h4>
+          <h4 className="text-white font-semibold mb-4 uppercase tracking-wide">
+            Stay in the loop
+          </h4>
           <p className="text-sm text-zinc-400 mb-3">
             Get exclusive offers and styling tips straight to your inbox.
           </p>
@@ -72,7 +88,7 @@ const Footer = () => {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-white/10">
+      <div className="relative border-t border-white/10 z-10">
         <div className="container mx-auto px-6 py-5 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-zinc-500">
           <p>&copy; {new Date().getFullYear()} Ponytelle. All rights reserved.</p>
           <div className="flex gap-4">
