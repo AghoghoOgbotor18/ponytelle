@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
-import { FiShoppingCart, FiMenu, FiX, FiSearch } from "react-icons/fi";
+import { FiShoppingCart, FiMenu, FiX, FiSearch, FiHeart } from "react-icons/fi";
 import { useDispatch } from "react-redux";
 import { setSearch } from "../../features/products/productsSlice";
 import { useSelector } from "react-redux";
 import MobileSearchOverlay from './MobileSearchOverlay';
+import { FaHeart } from 'react-icons/fa';
 
 
 const Navbar = () => {
@@ -14,7 +15,7 @@ const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
+  
   //navbar scroll effect
   const isHome = location.pathname === "/";
   const shouldBeTransparent = isHome && !isScrolled;
@@ -56,6 +57,10 @@ const Navbar = () => {
     (total, item) => total + item.quantity, 0
   );
 
+  //wishlist count
+  const wishlistCount = useSelector((state) => state.wishlist.items?.length || 0);
+
+
   return (
     <div
       className={`fixed top-0 left-0 right-0 z-50 h-13 md:h-14 transition-all duration-300 
@@ -81,15 +86,6 @@ const Navbar = () => {
               }
             >
               Shop
-            </NavLink>
-
-            <NavLink to="/wishlist" className={({ isActive }) =>`text-lg font-semibold 
-              ${isActive
-                  ? shouldBeTransparent ? "text-white text-xl" : "text-black text-xl"
-                  : shouldBeTransparent ? "text-white/80" : "brand-color"}`
-              }
-            >
-              Wishlist
             </NavLink>
           </div>
 
@@ -132,6 +128,24 @@ const Navbar = () => {
                 <span className="absolute -top-2 -right-2 brand-bg text-white text-xs px-2 py-0.5 rounded-full">
                   {cartCount}
                 </span>
+              )}
+            </NavLink>
+
+            {/* Wishlist */}
+            <NavLink to="/wishlist">
+              {({ isActive }) => (
+                <div
+                  className={`relative transition-all duration-300 hover:scale-110
+                  ${isActive ? "text-red-500" : shouldBeTransparent ? "text-white" : "text-black"
+                  }`}
+                >
+                  {isActive ? <FaHeart size={22} /> : <FiHeart size={22} />}
+                  {wishlistCount > 0 && (
+                    <span className="absolute -top-2 -right-2 brand-bg text-white text-xs px-2 py-0.5 rounded-full">
+                      {wishlistCount}
+                    </span>
+                  )}
+                </div>
               )}
             </NavLink>
 
