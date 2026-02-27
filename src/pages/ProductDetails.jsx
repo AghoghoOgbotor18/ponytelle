@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import { addToCart } from "../features/cart/cartSlice";
 import { useDispatch } from "react-redux";
 import MostViewed from "../components/shop/MostViewed";
+import ProductCard from "../components/product/ProductCard";
 
 
 const ProductDetails = () => {
@@ -17,6 +18,8 @@ const ProductDetails = () => {
   const product = useSelector((state) =>
     state.products.items.find((p) => String(p.id) === id)
   );
+
+  const wishlistItems = useSelector((state) => state.wishlist.items);
 
   // scroll to top
   useEffect(() => {
@@ -143,8 +146,32 @@ const ProductDetails = () => {
           </button>
         </div>
       </div>
-      <div>
-        <MostViewed />
+
+      {/* Recommendations Section */}
+      <div className="mt-20 px-2">
+        {wishlistItems.length > 0 ? (
+          <>
+            <h2 className="text-2xl font-bold mb-6">
+              Your Wishlist ({wishlistItems.length})
+            </h2>
+
+            <div className="container mx-auto">
+              <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 auto-rows-auto">
+                {wishlistItems.map((item) => (
+                  <ProductCard
+                    key={item.id}
+                    product={item}
+                    onAddToCart={(product) => dispatch(addToCart(product))}
+                  />
+                ))}
+              </div>
+            </div>
+          </>
+        ) : (
+          <>
+            <MostViewed />
+          </>
+        )}
       </div>
     </section>
   );
