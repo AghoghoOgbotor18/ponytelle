@@ -33,7 +33,7 @@ const Wishlist = () => {
           {items.map((item) => (
             <div
               key={item.id}
-              className="flex justify-between items-center shadow-xl p-4 rounded mb-10"
+              className="flex flex-col md:flex-row justify-between items-between md:items-center shadow-xl p-4 rounded mb-10"
             >
               <div className="h-30 flex justify-between gap-4 rounded-lg mb-4 overflow-hidden">
                 <img
@@ -56,8 +56,9 @@ const Wishlist = () => {
                 </div>
               </div>
 
+              <hr className="text-slate-100 py-3 md:hidden" />
               {/* Actions */}
-              <div className="flex justify-end gap-3 mt-auto">
+              <div className="flex justify-between md:justify-end gap-3 mt-auto">
                 <button
                   onClick={() => {dispatch(addToCart(item)); toast.success(`${item.name} added to cart`)}}
                   className="bg-black hover:bg-[#281a17] text-white py-2 rounded text-sm hover:opacity-90 transition px-3 cursor-pointer"
