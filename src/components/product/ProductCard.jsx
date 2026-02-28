@@ -1,11 +1,18 @@
 // src/components/shared/ProductCard.jsx
-import React from "react";
+import React, { useState } from "react";
 import { FiShoppingBag } from "react-icons/fi";
 import { FaFire, FaStar } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import WishlistHeart from "./WishlistHeart";
 
 const ProductCard = ({ product, variant = "shop", onAddToCart }) => {
+
+  //show wishlist heart
+  const [show, setShow] = useState(false);
+  const toggleShow = () => setShow(true);
+
+  //best seller cards
   const rating = Math.round(product.rating || 0);
   const oldPrice = product.price + 5000;
 
@@ -19,9 +26,9 @@ const ProductCard = ({ product, variant = "shop", onAddToCart }) => {
         isSpecial
           ? "min-w-[220px] p-1.5"
           : "p-2 h-[340px] flex flex-col"
-      }`}
+      }`} 
     >
-      <Link to={`/product/${product.id}`} className="block">
+      <Link to={`/product/${product.id}`} className="block" onMouseEnter={toggleShow} onMouseLeave={() => setShow(false)}>
         {/* Image */}
         <div
           className={`relative overflow-hidden rounded-lg ${
@@ -38,6 +45,11 @@ const ProductCard = ({ product, variant = "shop", onAddToCart }) => {
             <span className="absolute top-3 left-3 bg-black text-white text-xs px-3 py-1 rounded-full">
               Best Seller
             </span>
+          )}
+
+          {/* wishlist heart */}
+          {show && (
+            <WishlistHeart product ={product} />
           )}
         </div>
 
