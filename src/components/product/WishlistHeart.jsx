@@ -13,7 +13,7 @@ const WishlistHeart = ({product}) => {
     );
 
     return (
-        <div className={`absolute top-3 right-3 z-10 opacity-0 group-hover:opacity-100 md:opacity-0 transition ${isInWishlist ? "opacity-100" : ""}`}
+        <div className={`absolute top-3 right-3 z-10 opacity-0 group-hover:opacity-100 active:opacity-100 md:opacity-0 transition ${isInWishlist ? "opacity-100" : ""}`}
         >
             <button onClick={(e) => {
                 e.preventDefault();

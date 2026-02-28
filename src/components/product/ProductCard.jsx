@@ -8,10 +8,6 @@ import WishlistHeart from "./WishlistHeart";
 
 const ProductCard = ({ product, variant = "shop", onAddToCart }) => {
 
-  //show wishlist heart
-  const [show, setShow] = useState(false);
-  const toggleShow = () => setShow(true);
-
   //best seller cards
   const rating = Math.round(product.rating || 0);
   const oldPrice = product.price + 5000;
@@ -28,7 +24,7 @@ const ProductCard = ({ product, variant = "shop", onAddToCart }) => {
           : "p-2 h-[340px] flex flex-col"
       }`} 
     >
-      <Link to={`/product/${product.id}`} className="block" onMouseEnter={toggleShow} onMouseLeave={() => setShow(false)}>
+      <Link to={`/product/${product.id}`} className="block">
         {/* Image */}
         <div
           className={`relative overflow-hidden rounded-lg ${
@@ -38,8 +34,11 @@ const ProductCard = ({ product, variant = "shop", onAddToCart }) => {
           <img
             src={product.image}
             alt={product.name}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 active:scale-110"
           />
+
+          {/* show wislhlist icon on hover */}
+          <WishlistHeart product ={product} />
 
           {product.isBestSeller && (
             <span className="absolute top-3 left-3 bg-black text-white text-xs px-3 py-1 rounded-full">
@@ -47,10 +46,6 @@ const ProductCard = ({ product, variant = "shop", onAddToCart }) => {
             </span>
           )}
 
-          {/* wishlist heart */}
-          {show && (
-            <WishlistHeart product ={product} />
-          )}
         </div>
 
         {/* Content */}
