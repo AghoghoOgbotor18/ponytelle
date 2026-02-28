@@ -20,7 +20,7 @@ const FilterSidebar = () => {
         {["all", "straight", "wavy", "curly", "kinky"].map((cat) => (
           <button
             key={cat}
-            onClick={() => { dispatch(setCategory(cat)); navigate("/shop") }}
+            onClick={() => { dispatch(setCategory(cat)); navigate("/shop"); scrollTo({top: 0, behavior: "smooth"})}}
             className={`block text-left py-1 capitalize hover:brand-color ${
               filters.category === cat ? "brand-color font-semibold" : ""
             }`}
@@ -38,7 +38,7 @@ const FilterSidebar = () => {
         <h3 className="font-semibold mb-3">Rating</h3>
         {[5, 4, 3, 2, 1].map((r) => (
           <label key={r} className="flex items-center gap-2 cursor-pointer mb-2">
-            <input type="radio" name="rating" checked={filters.rating === r} onChange={() => dispatch(setRating(r))} />
+            <input type="radio" name="rating" checked={filters.rating === r} onChange={() => dispatch(setRating(r))} onClick={() => scrollTo({top: 0, behavior: "smooth"})} />
             <div className="flex">
               {[...Array(5)].map((_, i) => (
                 <span key={i} className={i < r ? "text-yellow-400" : "text-gray-300"}>
@@ -54,16 +54,16 @@ const FilterSidebar = () => {
       {/* Hair Length */}
       <div>
         <h3 className="font-semibold mb-3">Hair Length</h3>
-        {[12, 14, 16, 18, 20, 22, 24, 26].map((len) => (
+        {[14, 16, 18, 20, 22, 24, 26].map((len) => (
           <label key={len} className="flex items-center gap-3 mb-2 cursor-pointer">
-            <input type="radio" name="length" checked={filters.length === len} onChange={() => dispatch(setLength(len))} />
+            <input type="radio" name="length" checked={filters.length === len} onClick={() => scrollTo({top: 0, behavior: "smooth"})} onChange={() => dispatch(setLength(len))} />
             <p>{len} inches</p>
           </label>
         ))}
       </div>
 
       {/* Reset All */}
-      <button onClick={() => { dispatch(resetFilters()); navigate("/shop") }} className="text-red-800 cursor-pointer hover:text-red-600">
+      <button onClick={() => { dispatch(resetFilters()); navigate("/shop"); scrollTo({top: 0, behavior: "smooth"}) }} className="text-red-800 cursor-pointer hover:text-red-600">
         Reset All Filters
       </button>
     </div>

@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { FaHeart } from 'react-icons/fa';
 import { FiHeart } from 'react-icons/fi';
 import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
 
 const WishlistHeart = ({product}) => {
     const dispatch = useDispatch();
@@ -21,8 +22,10 @@ const WishlistHeart = ({product}) => {
 
                 if (isInWishlist) {
                     dispatch(removeFromWishlist(product.id));
+                    toast.success(`${product.name} removed from wishlist`)
                 } else {
                     dispatch(addToWishlist(product));
+                    toast.success(`${product.name} added to wishlist`)
                 }
                 }}
                 className={`w-9 h-9 flex items-center justify-center rounded-full shadow-md transition

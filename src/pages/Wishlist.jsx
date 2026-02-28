@@ -3,6 +3,7 @@ import { addToCart } from "../features/cart/cartSlice";
 import { removeFromWishlist } from "../features/wishList/wishlistSlice";
 import { FaHeart } from "react-icons/fa";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 const Wishlist = () => {
   const { items } = useSelector((state) => state.wishlist);
@@ -23,10 +24,13 @@ const Wishlist = () => {
       {/* Empty State */}
       {items.length === 0 ? (
         <div className="flex flex-col items-center justify-center text-center py-20">
-          <FaHeart className="text-4xl text-gray-300 mb-4" />
+          <FaHeart className="text-4xl text-gray-300 mb-2" />
           <p className="text-gray-500 text-lg">
             Your wishlist is empty
           </p>
+          <Link to="/shop" className="bg-black py-2 px-3 text-white rounded hover:bg-[#281a17] mt-10">
+            Shop Now
+          </Link>
         </div>
       ) : (
         <div className="">

@@ -46,7 +46,7 @@ const PriceFilter = () => {
 
             {/* Price range bar */}
             <input type="range" min={minPrice} max={maxPrice} value={selectedMax} onChange={(e) => setSelectedMax(+e.target.value)} className="w-full h-2 rounded-lg appearance-none cursor-pointer" style={{ background: `linear-gradient(to right, #281a17 0%, #281a17 ${percentage}%, #e5e7eb ${percentage}%, #e5e7eb 100%)` }} />
-            <button onClick={() => dispatch(setPriceMax(selectedMax))} className="mt-3 w-full bg-[#281a17] text-white py-2 rounded hover:opacity-90">
+            <button onClick={() => {dispatch(setPriceMax(selectedMax)); scrollTo({top: 0, behavior: "smooth"})}} className="mt-3 w-full bg-black hover:bg-[#281a17] text-white py-2 rounded hover:opacity-90">
                 Apply
             </button>
 

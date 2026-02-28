@@ -14,11 +14,11 @@ const MobileFilterBar = () => {
   return (
     <div className="flex justify-center items-center">
       {/* Fixed bottom bar */}
-      <div className="fixed w-1/2 bottom-3 brand-bg text-white flex md:hidden rounded-3xl py-1 z-40">
-        <button className="flex-1 py-3 flex items-center justify-center gap-2" onClick={() => setOpenFilter(true)}>
+      <div className="fixed w-1/2 bottom-3 bg-black text-white flex md:hidden rounded-3xl py-1 z-40">
+        <button className="flex-1 py-3 flex items-center justify-center gap-2 cursor-pointer" onClick={() => setOpenFilter(true)}>
           <FiFilter /> Filter
         </button>
-        <button className="flex-1 py-3 flex items-center justify-center gap-2 border-l" onClick={() => setOpenSort(true)}>
+        <button className="flex-1 py-3 flex items-center justify-center gap-2 border-l cursor-pointer" onClick={() => setOpenSort(true)}>
           <FiChevronDown /> Sort By
         </button>
       </div>
@@ -26,7 +26,7 @@ const MobileFilterBar = () => {
       {/* Filter Panel */}
       {openFilter && (
         <div className="fixed inset-0 bg-black/40 z-50 md:hidden">
-          <div className="absolute bottom-0 left-0 right-0 bg-white h-[80%] rounded-t-2xl w-full flex flex-col">
+          <div className="absolute bottom-0 left-0 right-0 bg-white h-[80%] rounded-t-2xl w-full flex flex-col"> 
             <div className="sticky top-0 z-10 bg-white flex items-center justify-between px-4 py-3 shadow-md">
               <h3 className="font-semibold text-lg">Filters</h3>
               <button onClick={() => setOpenFilter(false)} className="text-2xl p-1 rounded hover:bg-gray-100">
