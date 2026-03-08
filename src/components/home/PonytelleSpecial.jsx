@@ -89,10 +89,10 @@ const PonytelleSpecial = () => {
             {/* Carousel */}
             <div
                 ref={scrollRef}
-                className="flex gap-4 overflow-x-auto scroll-smooth scrollbar-hide pb-4"
+                className="flex gap-4 overflow-x-auto scroll-smooth scrollbar-hide pb-4 px-6"
             >
                 {bestSellers.map((product) => (
-                    <div key={product.id} className="w-[48%] md:w-[200px] flex-shrink-0">
+                    <div key={product.id} className="w-[52%] md:w-[220px] flex-shrink-0">
                         <ProductCard product={product} variant="special" />
                     </div>
                 ))}
