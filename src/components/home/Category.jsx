@@ -65,7 +65,7 @@ const Category = () => {
                 <div className='md:w-[85%] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-9 max-sm:gap-18'>
                     {categories.map((c, id) => (
                     <motion.div key={id} className='relative overflow-hidden max-sm:rounded-[35%] sm:rounded-full hover:-translate-y-2 duration-500 flex justify-center' variants={itemVariants} onClick={() => handleClick(c.slug)}>
-                        <img src={c.image} alt={c.name} className='w-90 md:[w-65] h-90'/>
+                        <img src={c.image} alt={c.name} className='bg-center object-fit w-90 md:[w-65] h-90'/>
                         <div className='absolute inset-0 bg-linear-to-t from-black/80 hover:from-[#281a17] hover:via-[#3a2621]/30 active:from-[#281a17] active:via-[#3a2621]/30 to-transparent cursor-pointer'></div>
                         <p className='absolute bottom-10 flex justify-center items-center text-white text-lg font-semibold z-10 text-center'>
                             {c.name}

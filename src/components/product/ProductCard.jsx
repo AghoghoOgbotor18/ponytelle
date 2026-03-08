@@ -80,15 +80,17 @@ const ProductCard = ({ product, variant = "shop", onAddToCart }) => {
           </div>
 
           {/* sold items */}
-          {product.isBestSeller && (
-            <div className="flex items-center gap-1 mt-1 text-red-800 text-xs">
-              <FaFire/>
-              <p>{product.sold}</p>
-            </div>
-          )}
+          <div className="flex items-center gap-1 mt-1 text-red-800 text-xs min-h-[18px]">
+            {product.isBestSeller && (
+              <>
+                <FaFire />
+                <p>{product.sold}</p>
+              </>
+            )}
+          </div>
 
           {/* Price + Button */}
-          <div className={`mt-2 ${
+          <div className={`mt-auto ${
               isSpecial
                 ? ""
                 : "flex items-center justify-between pt-2"
