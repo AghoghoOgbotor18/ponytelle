@@ -7,20 +7,27 @@ import ProductCard from "../product/ProductCard";
 const PonytelleSpecial = () => {
 
     const products = useSelector((state) => state.products.items) || [];
-    const bestSellers = products.filter(
-        (product) => product.isBestSeller
-    );
+        const bestSellers = products.filter(
+            (product) => product.isBestSeller
+        );
 
-    const scrollRef = useRef(null);
+        const scrollRef = useRef(null);
 
-    const [showLeft, setShowLeft] = useState(false);
-    const [showRight, setShowRight] = useState(true);
+        const [showLeft, setShowLeft] = useState(false);
+        const [showRight, setShowRight] = useState(true);
 
-    const checkScroll = () => {
+        const checkScroll = () => {
         const el = scrollRef.current;
 
-        setShowLeft(el.scrollLeft > 0);
-        setShowRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 5);
+        if (!el) return;
+
+        const isStart = el.scrollLeft <= 0;
+
+        const isEnd =
+            Math.ceil(el.scrollLeft + el.clientWidth) >= el.scrollWidth - 20;
+
+        setShowLeft(!isStart);
+        setShowRight(!isEnd);
     };
 
     const scroll = (direction) => {
