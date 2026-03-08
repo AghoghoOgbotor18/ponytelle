@@ -23,8 +23,7 @@ const PonytelleSpecial = () => {
 
         const isStart = el.scrollLeft <= 0;
 
-        const isEnd =
-            Math.ceil(el.scrollLeft + el.clientWidth) >= el.scrollWidth - 20;
+        const isEnd = Math.ceil(el.scrollLeft + el.clientWidth) >= el.scrollWidth - 20;
 
         setShowLeft(!isStart);
         setShowRight(!isEnd);
@@ -93,7 +92,7 @@ const PonytelleSpecial = () => {
                 className="flex gap-4 overflow-x-auto scroll-smooth scrollbar-hide pb-4"
             >
                 {bestSellers.map((product) => (
-                    <div key={product.id} className="min-w-[200px]">
+                    <div key={product.id} className="w-[48%] md:w-[200px] flex-shrink-0">
                         <ProductCard product={product} variant="special" />
                     </div>
                 ))}

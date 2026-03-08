@@ -80,7 +80,7 @@
             className="flex gap-5 overflow-x-auto scroll-smooth scrollbar-hide"
         >
             {featuredProducts.map((product) => (
-            <div key={product.id} className="min-w-[200px]">
+            <div key={product.id} className="w-[48%] md:w-[200px] flex-shrink-0">
                 <ProductCard product={product} />
             </div>
             ))}
