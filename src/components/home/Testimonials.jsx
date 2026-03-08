@@ -107,12 +107,12 @@ const TestimonialSection = () => {
 
             <div className="overflow-hidden">
                 <div
-                className={`flex ${enableTransition ? "transition-transform duration-700 ease-in-out" : ""}`}
+                className={`flex pt-10 pb-20 ${enableTransition ? "transition-transform duration-700 ease-in-out" : ""}`}
                 style={{ transform: `translateX(-${index * 100}%)` }}
                 >
                 {slides.map((t, i) => (
                     <div key={i} className="w-full md:w-1/3 px-3 flex-shrink-0">
-                    <div className="bg-white/70 backdrop-blur-lg p-6 rounded-2xl shadow-lg h-full">
+                    <div className="bg-white/70 backdrop-blur-lg p-6 rounded-2xl shadow-xl h-full">
                         <div className="flex items-center gap-4 mb-4">
                         <img src={t.photo} alt={t.name} className="w-12 h-12 rounded-full object-cover border-3 border-amber-950"/>
                         <div>
