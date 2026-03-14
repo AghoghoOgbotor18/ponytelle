@@ -7,37 +7,33 @@ import ProductCard from "../product/ProductCard";
 const PonytelleSpecial = () => {
 
     const products = useSelector((state) => state.products.items) || [];
-        const bestSellers = products.filter(
-            (product) => product.isBestSeller
-        );
+    const bestSellers = products.filter(
+        (product) => product.isBestSeller
+    );
 
-        const scrollRef = useRef(null);
+    const scrollRef = useRef(null);
 
-        const [showLeft, setShowLeft] = useState(false);
-        const [showRight, setShowRight] = useState(true);
+    const [showLeft, setShowLeft] = useState(false);
+    const [showRight, setShowRight] = useState(true);
 
-        const checkScroll = () => {
+    const checkScroll = () => {
         const el = scrollRef.current;
-
         if (!el) return;
-
         const isStart = el.scrollLeft <= 0;
-
         const isEnd = Math.ceil(el.scrollLeft + el.clientWidth) >= el.scrollWidth - 20;
-
         setShowLeft(!isStart);
         setShowRight(!isEnd);
     };
 
     const scroll = (direction) => {
         const el = scrollRef.current;
-        const cardWidth = el.firstChild.offsetWidth + 20;
-        const scrollAmount = cardWidth * 2;
+        const cardWidth = el.firstChild.offsetWidth + 20; // card + gap
+        const scrollAmount = cardWidth * 2; // 2 cards each click
 
         if (direction === "left") {
-            el.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+        el.scrollBy({ left: -scrollAmount, behavior: "smooth" });
         } else {
-            el.scrollBy({ left: scrollAmount, behavior: "smooth" });
+        el.scrollBy({ left: scrollAmount, behavior: "smooth" });
         }
     };
 
@@ -87,12 +83,12 @@ const PonytelleSpecial = () => {
             )}
 
             {/* Carousel */}
-            <div
+            <div 
                 ref={scrollRef}
-                className="flex gap-4 overflow-x-auto scroll-smooth scrollbar-hide pb-4 px-6"
+                className="flex gap-5 overflow-x-auto scroll-smooth scrollbar-hide pb-4"
             >
                 {bestSellers.map((product) => (
-                    <div key={product.id} className="w-[52%] md:w-[220px] flex-shrink-0">
+                    <div key={product.id} className="w-[48%] md:w-[220px] flex-shrink-0">
                         <ProductCard product={product} variant="special" />
                     </div>
                 ))}

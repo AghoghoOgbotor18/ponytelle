@@ -18,9 +18,9 @@ const ProductCard = ({ product, variant = "shop", onAddToCart }) => {
 
   return (
     <div
-      className={`group bg-white border border-zinc-100/60 rounded-xl transition hover:shadow-lg active:shadow-lg ${
+      className={`group bg-white border border-zinc-100/60 rounded-xl transition hover:shadow-lg active:shadow-lg mb-4 ${
         isSpecial
-          ? "min-w-[220px] p-1.5"
+          ? "min-w-[190px] p-2"
           : "p-2 h-[340px] flex flex-col"
       }`} 
     >
