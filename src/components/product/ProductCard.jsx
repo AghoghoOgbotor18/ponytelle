@@ -28,7 +28,7 @@ const ProductCard = ({ product, variant = "shop", onAddToCart }) => {
         {/* Image */}
         <div
           className={`relative overflow-hidden rounded-lg ${
-            isSpecial ? "h-[220px]" : "h-44"
+            isSpecial ? "h-[200px]" : "h-44"
           }`}
         >
           <img
